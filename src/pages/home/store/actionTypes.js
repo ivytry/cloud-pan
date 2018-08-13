@@ -1,0 +1,1 @@
+export const INIT_TREE_DATA = 'home/INIT_TREE_DATA';

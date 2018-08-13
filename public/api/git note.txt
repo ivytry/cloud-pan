@@ -1,0 +1,2 @@
+1、创建sshkey：ssh keygen
+2、在.ssh目录中找到.pub文件，复制粘贴到github ssh key中
