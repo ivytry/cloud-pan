@@ -65,8 +65,8 @@ class Header extends Component{
 		const { showBox, handleShowBox, handleShowClassify, handleShowSpace } = this.props
 		return (
 			<HeaderWrapper>
+				<Logo></Logo>
 				<HeaderInner>
-					<Logo></Logo>
 					<Nav>
 						<NavItem className="left active" href="/">网盘</NavItem>
 						<NavItem 

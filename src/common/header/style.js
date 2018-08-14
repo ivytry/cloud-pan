@@ -7,28 +7,29 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const HeaderInner = styled.div`
-    min-width: 768px;
-    max-width: 1440px;
-	margin: 0 auto;
 	height:56px;
+	float:left;
 `;
 
 export const Logo = styled.a.attrs({
 	"href":'/'
 })`
-	width:100px;
+    width:200px;
 	height:56px;
+	padding:0 10px;
 	display:block;
-	background:url(${logopic}) no-repeat center center;
+	background:url(${logopic}) no-repeat 22px center;
 	background-size:contain;
-	position: absolute;
-	top:0
-	left:0;
+	float:left;
 `;
 
 export const Nav = styled.div`
-	width:960px;
-	margin:0 auto;
+	@media (max-width:1920px) and (min-width:1680px){
+		width:1400px;
+	}
+	@media (max-width:1366px) and (min-width:1024px){
+		width:900px;
+	}
 	.share, .more{
 		&:hover{
 			background:#f6f6f6;

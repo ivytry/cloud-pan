@@ -2,23 +2,27 @@ import styled from 'styled-components';
 
 export const HomeWrapper = styled.div`
 	margin: 0 auto;
-    min-width: 768px;
-    max-width: 1440px;
-    width:1440px;
+    min-width: 1366px;
 	overflow:hidden;
 `;
 
 export const HomeLeft = styled.div`
-    width: 198px;
-    min-height: 680px;
-    max-height: 900px;
+	width:200px
 	border-right: 1px solid #f0f0f0;
 	padding:20px 10px;
 	float:left;
 `;
 
 export const TreeRoot = styled.div`
-	div{
+	.nodebox{
+		@media (max-width:1920px) and (min-width:1680px){
+			height:786px;
+		}
+		@media (max-width:1366px) and (min-width:1024px){
+			height:786px;
+		}
+	}
+	.all{
 		color: #424e67;
 		height: 38px;
     	line-height: 38px;
@@ -45,7 +49,12 @@ export const TreeRoot = styled.div`
 `;
 
 export const HomeRight = styled.div`
-	width:1220px;
+	@media (max-width:1920px) and (min-width:1680px){
+		width:1682px;
+	}
+	@media (max-width:1366px) and (min-width:1024px){
+		width:1140px;
+	}
     overflow:hidden;
     float:left;
 `;

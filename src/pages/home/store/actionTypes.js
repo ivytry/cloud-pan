@@ -1,1 +1,5 @@
 export const INIT_TREE_DATA = 'home/INIT_TREE_DATA';
+export const EXPANDED_FOR_ALL = 'home/EXPANDED_FOR_ALL';
+export const SEARCHED_CALLBACK = 'home/SEARCHED_CALLBACK';
+export const SELECT_SEARCH_MATCH = 'home/SELECT_SEARCH_MATCH';
+export const CHANGE_SEARCH_STRING = 'home/CHANGE_SEARCH_STRING';

@@ -1,186 +1,65 @@
 {
-	"status": "success",
-	"data": [
-	{
-		"id": "all",
-		"name": "全部文件",
-		"icon": "&#xe636;",
-		"children": [
-			{
-				"id": "pic",
-				"name": "1级目录",
-				"icon": "",
-				"children": [
-					{
-						"id": "other",
-						"name": "2级目录",
-						"icon": "",
-						"children": []
-					},
-					{
-						"id": "other",
-						"name": "2级目录",
-						"icon": "",
-						"children": []
-					},
-					{
-						"id": "other",
-						"name": "2级目录",
-						"icon": "",
-						"children": []
-					}
-				]
-			},
-			{
-				"id": "file",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "video",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "seed",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "music",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			},
-			{
-				"id": "other",
-				"name": "1级目录",
-				"icon": "",
-				"children": []
-			}
-		]
-	}]
+    "success": true,
+    "data": [
+        {
+            "title": ".gitignore"
+        },
+        {
+            "title": "package.json"
+        },
+        {
+            "title": "src",
+            "isDirectory": true,
+            "expanded": false,
+            "children": [
+                {
+                    "title": "styles.css"
+                },
+                {
+                    "title": "index.js"
+                },
+                {
+                    "title": "reducers.js"
+                },
+                {
+                    "title": "actions.js"
+                },
+                {
+                    "title": "utils.js"
+                }
+            ]
+        },
+        {
+            "title": "tmp",
+            "isDirectory": true,
+            "children": [
+                {
+                    "title": "12214124-log"
+                },
+                {
+                    "title": "drag-disabled-file",
+                    "dragDisabled": true
+                }
+            ]
+        },
+        {
+            "title": "build",
+            "isDirectory": true,
+            "children": [
+                {
+                    "title": "react-sortable-tree.js"
+                }
+            ]
+        },
+        {
+            "title": "public",
+            "isDirectory": true
+            
+        },
+        {
+            "title": "node_modules",
+            "isDirectory": true
+            
+        }
+    ]
 }
