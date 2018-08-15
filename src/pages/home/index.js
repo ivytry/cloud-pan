@@ -2,18 +2,32 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionCreator } from './store';
 import Tree from './component/Tree';
-import {
-	HomeWrapper,
-	HomeLeft,
-	HomeRight,
-	Top,
-	BtnLeft,
-	BtnRight,
-	SearchWrapper
-} from './style';
+import ReactTable, { ReactTableDefaults } from 'react-table';
+import "react-table/react-table.css";
+import { HomeWrapper, HomeLeft, HomeRight, Top, BtnLeft, BtnRight, SearchWrapper, Body } from './style';
 
 class Home extends Component{
 	render(){
+		const data = [{
+		    "name": 'Tanner Linsley',
+		    "age": 26,
+		    "date": '2018-08-15'
+		  },{
+		    "name": 'Taley',
+		    "age": 23,
+		    "date": '2018-08-15'
+		  }]
+
+		const columns = [{
+		    "Header": '文件名',
+		    accessor: 'name' 
+		  }, {
+		    Header: '大小',
+		    accessor: 'age'
+		  }, {
+		    Header: '修改日期',
+		    accessor: 'date'
+		  }]
 		return (
 			<HomeWrapper>
 				<HomeLeft>
@@ -33,10 +47,21 @@ class Home extends Component{
 								<i className="iconfont del">&#xe647;</i>
 							</SearchWrapper>
 						</div>
-						<div>
-
-						</div>
 					</Top>
+					<Body>
+						<ReactTable
+						    data={data}
+						    columns={columns}
+						    loading={false}
+						    showPagination={false}
+						    showPaginationTop={true}
+						    showPaginationBottom={true}
+						    showPageSizeOptions={true}
+						    defaultPageSize={22}
+						    style={{ height: "780px" }}
+						    className="-highlight"
+						/>
+					</Body>
 				</HomeRight>
 			</HomeWrapper>
 		)

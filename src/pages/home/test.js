@@ -51,30 +51,12 @@ class App extends Component {
     };
 
     this.updateTreeData = this.updateTreeData.bind(this);
-    this.expandAll = this.expandAll.bind(this);
-    this.collapseAll = this.collapseAll.bind(this);
   }
 
   updateTreeData(treeData) {
     this.setState({ treeData });
   }
 
-  expand(expanded) {
-    this.setState({
-      treeData: toggleExpandedForAll({
-        treeData: this.state.treeData,
-        expanded,
-      }),
-    });
-  }
-
-  expandAll() {
-    this.expand(true);
-  }
-
-  collapseAll() {
-    this.expand(false);
-  }
 
   render() {
     const {
@@ -168,15 +150,15 @@ class App extends Component {
           <SortableTree
             theme={FileExplorerTheme}
             treeData={treeData}
-            onChange={this.updateTreeData}
             searchQuery={searchString}
             searchFocusOffset={searchFocusIndex}
-            searchFinishCallback={matches =>
-              this.setState({
-                searchFoundCount: matches.length,
-                searchFocusIndex:
-                  matches.length > 0 ? searchFocusIndex % matches.length : 0,
-              })}
+            searchFinishCallback={
+              matches =>
+                this.setState({
+                  searchFoundCount: matches.length,
+                  searchFocusIndex: matches.length > 0 ? searchFocusIndex % matches.length : 0,
+                })
+            }
             canDrag={({ node }) => !node.dragDisabled}
             canDrop={({ nextParent }) => !nextParent || nextParent.isDirectory}
             generateNodeProps={rowInfo => ({

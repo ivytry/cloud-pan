@@ -16,8 +16,9 @@ export const getInitFileTreeData = (flag) => {
 	}
 }
 
-export const expandedForAll = (fileTree) => ({
+export const expandedForAll = (fileTree, expanded) => ({
 	type: actionTypes.EXPANDED_FOR_ALL,
+	expanded: expanded,
 	fileTree
 })
 
@@ -31,7 +32,6 @@ export const selectPrevMatchData = (index) => ({
 	type: actionTypes.SELECT_SEARCH_MATCH,
     index: index
 })
-
 
 export const change = (value) => ({
 	type: actionTypes.CHANGE_SEARCH_STRING,

@@ -8,20 +8,17 @@ import FileExplorerTheme from 'react-sortable-tree-theme-file-explorer';
 class Tree extends PureComponent{
 	
 	render(){
-		const { fileTree, searchString, searchFocusIndex, searchFoundCount, handleChange, expandAll, selectPrevMatch, selectNextMatch, handleSearchFinishCallback } = this.props
+		const { fileTree, expanded, searchString, searchFocusIndex, searchFoundCount, handleChangeTreeData, handleChange, expandAll, selectPrevMatch, selectNextMatch, handleSearchFinishCallback } = this.props
 		return (
 			<TreeRoot id="root">
-		        <button onClick={() => {expandAll(fileTree, true)}}>展开全部</button>
-		        <button onClick={() => {expandAll(fileTree, false)}}>收起全部</button>
-	            <form style={{ display: 'inline-block' }} onSubmit={event => { event.preventDefault() }}>
-		            <label htmlFor="find-box">
-		                <input
-			                id="find-box"
-			                type="text"
-			                value={searchString}
-			                onChange={event => { handleChange(event) }}
-		                />
-		            </label>
+	            <form onSubmit={event => { event.preventDefault() }}>
+	                <input
+	                	className="treeSearchInput"
+		                type="text"
+		                placeholder="搜索文件"
+		                value={searchString}
+		                onChange={event => { handleChange(event) }}
+	                />
 		            <button
 		              type="button"
 		              disabled={!searchFoundCount}
@@ -46,15 +43,30 @@ class Tree extends PureComponent{
 				<div className="all active" father="root">
 					<i className="iconfont">&#xe636;</i>
 					全部文件
+					<i className="iconfont expand" onClick={() => {expandAll(fileTree, !expanded)}} dangerouslySetInnerHTML={{__html: expanded ? "&#xe620;" : "&#xe61f;" }}></i>
 				</div>
 				<div className="nodebox">
 					<SortableTree
 			            treeData={fileTree}
+			            onChange={treeData => {handleChangeTreeData(treeData)}}
 			            theme={FileExplorerTheme}
+			            searchQuery={searchString}
 			            searchFocusOffset={searchFocusIndex}
 			            searchFinishCallback={matches => {handleSearchFinishCallback(matches, searchFocusIndex)}}
 			            canDrag={({ node }) => !node.dragDisabled}
 			            canDrop = {({ nextParent }) => !nextParent || nextParent.isDirectory}
+			            getNodeKey={({ node }) => console.log(node.id)}
+			            onMoveNode={({ node, treeIndex, path }) =>
+			              global.console.debug(
+			                'node:',
+			                node,
+			                'treeIndex:',
+			                treeIndex,
+			                'path:',
+			                path
+			              )
+			            }
+			            isVirtualized={true}
 			            generateNodeProps={
 			            	rowInfo => ({
 			                icons: rowInfo.node.isDirectory
@@ -104,7 +116,8 @@ const mapState = (state) => {
 		fileTree: state.get("home").get("fileTree"),
 		searchFocusIndex: state.get("home").get("searchFocusIndex"),
 		searchFoundCount: state.get("home").get("searchFoundCount"),
-		searchString: state.get("home").get("searchString")
+		searchString: state.get("home").get("searchString"),
+		expanded: state.get("home").get("expanded")
 	}
 }
 
@@ -114,7 +127,7 @@ const mapDispatch = (dispatch) => {
 			dispatch(actionCreator.getInitFileTreeData())
 		},
 		expandAll: (fileTree, expanded) => {
-	        dispatch(actionCreator.expandedForAll(toggleExpandedForAll({treeData: fileTree, expanded})))
+	        dispatch(actionCreator.expandedForAll(toggleExpandedForAll({treeData: fileTree, expanded}), expanded))
 		},
 		handleSearchFinishCallback: (matches, searchFocusIndex) => {
 			dispatch(actionCreator.searchedCallback(matches.length, matches.length > 0 ? searchFocusIndex % matches.length : 0))
@@ -127,6 +140,9 @@ const mapDispatch = (dispatch) => {
 		},
 		handleChange: (e) => {
 			dispatch(actionCreator.change(e.target.value))
+		},
+		handleChangeTreeData: (treeData) => {
+			dispatch(actionCreator.expandedForAll(treeData))
 		}
 	}
 }

@@ -5,7 +5,8 @@ const defaultState = fromJS({
 	fileTree: [],
     searchString: '',
     searchFocusIndex: 0,
-    searchFoundCount: null
+    searchFoundCount: null,
+    expanded: false
 })
 
 const reducer = (state = defaultState, action) => {
@@ -13,7 +14,7 @@ const reducer = (state = defaultState, action) => {
 		case actionTypes.INIT_TREE_DATA:
 			return state.set("fileTree", action.fileTree);
 		case actionTypes.EXPANDED_FOR_ALL:
-			return state.set("fileTree", action.fileTree);
+			return state.set("fileTree", action.fileTree).set("expanded", action.expanded);
 		case actionTypes.SELECT_SEARCH_MATCH:
 			return state.set("searchFocusIndex", action.index);
 		case actionTypes.CHANGE_SEARCH_STRING:

@@ -2,10 +2,48 @@
     "success": true,
     "data": [
         {
-            "title": ".gitignore"
+            "title": "word",
+            "isDirectory": true,
+            "expanded": false,
+            "children": [
+                {
+                    "title": "styles.css"
+                },
+                {
+                    "title": "index.js"
+                },
+                {
+                    "title": "reducers.js"
+                },
+                {
+                    "title": "actions.js"
+                },
+                {
+                    "title": "utils.js"
+                }
+            ]
         },
         {
-            "title": "package.json"
+            "title": "work",
+            "isDirectory": true,
+            "expanded": false,
+            "children": [
+                {
+                    "title": "styles.css"
+                },
+                {
+                    "title": "index.js"
+                },
+                {
+                    "title": "reducers.js"
+                },
+                {
+                    "title": "actions.js"
+                },
+                {
+                    "title": "utils.js"
+                }
+            ]
         },
         {
             "title": "src",
@@ -60,6 +98,33 @@
             "title": "node_modules",
             "isDirectory": true
             
+        },
+        {
+            "title": "home",
+            "isDirectory": true,
+            "children": [
+                {
+                    "title": "react-sortable-tree.js"
+                }
+            ]
+        },
+        {
+            "title": "pic",
+            "isDirectory": true,
+            "children": [
+                {
+                    "title": "react-sortable-tree.js"
+                }
+            ]
+        },
+        {
+            "title": "video",
+            "isDirectory": true,
+            "children": [
+                {
+                    "title": "react-sortable-tree.js"
+                }
+            ]
         }
     ]
 }
