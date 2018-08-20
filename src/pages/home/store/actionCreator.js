@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const initFileTreeData = (data) => ({
 	"type": actionTypes.INIT_TREE_DATA,
-	"fileTree": data
+	"data": data
 })
 
 export const getInitFileTreeData = (flag) => {
@@ -37,3 +37,9 @@ export const change = (value) => ({
 	type: actionTypes.CHANGE_SEARCH_STRING,
     value: value
 })
+
+export const changeTableListData = (list) => ({
+	type: actionTypes.CHANGE_TABLE_LIST,
+    tableList: list
+})
+

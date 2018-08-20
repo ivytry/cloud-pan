@@ -2,127 +2,220 @@
     "success": true,
     "data": [
         {
+            "id": "1",
             "title": "word",
             "isDirectory": true,
             "expanded": false,
+            "date": "2018-08-15 12:12",
+            "size": "43M",
             "children": [
                 {
-                    "title": "styles.css"
+                    "id": "11",
+                    "title": "styles.css",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
-                    "title": "index.js"
+                    "id": "12",
+                    "title": "index.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
-                    "title": "reducers.js"
+                    "id": "13",
+                    "title": "reducers.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
-                    "title": "actions.js"
+                    "id": "14",
+                    "title": "actions.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
-                    "title": "utils.js"
+                    "id": "15",
+                    "title": "utils.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 }
             ]
         },
         {
+            "id": "2",
             "title": "work",
             "isDirectory": true,
             "expanded": false,
+            "date": "2018-08-15 12:12",
+            "size": "43M",
             "children": [
                 {
-                    "title": "styles.css"
+                    "id": "21",
+                    "title": "styles.css",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
-                    "title": "index.js"
+                    "id": "22",
+                    "title": "index.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
-                    "title": "reducers.js"
+                    "id": "23",
+                    "title": "reducers.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
-                    "title": "actions.js"
+                    "id": "24",
+                    "title": "actions.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
-                    "title": "utils.js"
+                    "id": "25",
+                    "title": "utils.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 }
             ]
         },
         {
+            "id": "3",
             "title": "src",
             "isDirectory": true,
             "expanded": false,
+            "date": "2018-08-15 12:12",
+            "size": "43M",
             "children": [
                 {
-                    "title": "styles.css"
+                    "id": "31",
+                    "title": "styles.css",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
-                    "title": "index.js"
+                    "id": "32",
+                    "title": "index.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
-                    "title": "reducers.js"
+                    "id": "33",
+                    "title": "reducers.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
-                    "title": "actions.js"
+                    "id": "34",
+                    "title": "actions.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
-                    "title": "utils.js"
+                    "id": "35",
+                    "title": "utils.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 }
             ]
         },
         {
+            "id": "4",
             "title": "tmp",
             "isDirectory": true,
+            "date": "2018-08-15 12:12",
+            "size": "43M",
             "children": [
                 {
-                    "title": "12214124-log"
+                    "id": "41",
+                    "title": "12214124-log",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 },
                 {
+                    "id": "42",
                     "title": "drag-disabled-file",
-                    "dragDisabled": true
+                    "dragDisabled": true,
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 }
             ]
         },
         {
+            "id": "5",
             "title": "build",
             "isDirectory": true,
+            "date": "2018-08-15 12:12",
+            "size": "43M",
             "children": [
                 {
-                    "title": "react-sortable-tree.js"
+                    "id": "51",
+                    "title": "react-sortable-tree.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 }
             ]
         },
         {
+            "id": "6",
             "title": "public",
+            "date": "2018-08-15 12:12",
+            "size": "43M",
             "isDirectory": true
             
         },
         {
+            "id": "7",
             "title": "node_modules",
+            "date": "2018-08-15 12:12",
+            "size": "43M",
             "isDirectory": true
             
         },
         {
+            "id": "8",
             "title": "home",
             "isDirectory": true,
+            "date": "2018-08-15 12:12",
+            "size": "43M",
             "children": [
                 {
-                    "title": "react-sortable-tree.js"
+                    "id": "81",
+                    "title": "react-sortable-tree.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 }
             ]
         },
         {
+            "id": "9",
             "title": "pic",
             "isDirectory": true,
+            "date": "2018-08-15 12:12",
+            "size": "43M",
             "children": [
                 {
-                    "title": "react-sortable-tree.js"
+                    "id": "91",
+                    "title": "react-sortable-tree.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 }
             ]
         },
         {
+            "id": "10",
             "title": "video",
             "isDirectory": true,
+            "date": "2018-08-15 12:12",
+            "size": "43M",
             "children": [
                 {
-                    "title": "react-sortable-tree.js"
+                    "id": "101",
+                    "title": "react-sortable-tree.js",
+                    "date": "2018-08-15 12:12",
+                    "size": "43M"
                 }
             ]
         }

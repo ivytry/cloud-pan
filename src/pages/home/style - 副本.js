@@ -98,21 +98,14 @@ export const Top = styled.div`
 `;
 
 export const BtnLeft = styled.div`
-	float:left;
-	margin-top:18px;
-	font-size:12px;
-	color:#666;
-`;
-
-export const BtnRight = styled.div`
-	float:right;
+	float:left
 	padding:0 16px;
 	height:34px;
 	line-height:34px;
 	border: 1px solid rgba(202,108,90,0.3);
 	border-radius:5px;
 	font-size:12px;
-	margin-left:10px;
+	margin-right:10px;
 	color:#ea6f5a;
 	.iconfont{
 		font-weight:700;
@@ -121,7 +114,6 @@ export const BtnRight = styled.div`
 	&.upload{
 		background:#ea6f5a;
 		color:white;
-		margin-right:-18px;
 	}
 	.upload{
 		font-size:1px;
@@ -134,6 +126,16 @@ export const BtnRight = styled.div`
 	.newfolder{
 		font-size:15px;
 		margin-right:6px;
+	}
+`;
+
+export const BtnRight = styled.div`
+	float:right;
+	.iconfont{
+		font-size:24px;
+		margin:5px;
+		color:#969696;
+		font-weight: 600;
 	}
 `;
 

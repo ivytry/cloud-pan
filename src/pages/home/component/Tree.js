@@ -8,7 +8,7 @@ import FileExplorerTheme from 'react-sortable-tree-theme-file-explorer';
 class Tree extends PureComponent{
 	
 	render(){
-		const { fileTree, expanded, searchString, searchFocusIndex, searchFoundCount, handleChangeTreeData, handleChange, expandAll, selectPrevMatch, selectNextMatch, handleSearchFinishCallback } = this.props
+		const { fileTree, expanded, searchString, searchFocusIndex, searchFoundCount, changeTableList, handleChangeTreeData, handleChange, expandAll, selectPrevMatch, selectNextMatch, handleSearchFinishCallback } = this.props
 		return (
 			<TreeRoot id="root">
 	            <form onSubmit={event => { event.preventDefault() }}>
@@ -55,7 +55,6 @@ class Tree extends PureComponent{
 			            searchFinishCallback={matches => {handleSearchFinishCallback(matches, searchFocusIndex)}}
 			            canDrag={({ node }) => !node.dragDisabled}
 			            canDrop = {({ nextParent }) => !nextParent || nextParent.isDirectory}
-			            getNodeKey={({ node }) => console.log(node.id)}
 			            onMoveNode={({ node, treeIndex, path }) =>
 			              global.console.debug(
 			                'node:',
@@ -69,36 +68,37 @@ class Tree extends PureComponent{
 			            isVirtualized={true}
 			            generateNodeProps={
 			            	rowInfo => ({
-			                icons: rowInfo.node.isDirectory
-			                ? [
-			                    <div
-			                        style={{
-				                        borderLeft: 'solid 8px gray',
-				                        borderBottom: 'solid 10px gray',
-				                        marginRight: 10,
-				                        width: 10,
-				                        height: 3,
-				                        filter: rowInfo.node.expanded
-				                          ? 'drop-shadow(1px 0 0 gray) drop-shadow(0 1px 0 gray) drop-shadow(0 -1px 0 gray) drop-shadow(-1px 0 0 gray)'
-				                          : 'none',
-				                        borderColor: rowInfo.node.expanded ? 'white' : 'gray',
-			                        }}
-			                    />
-			                  ]
-			                : [
-			                    <div
-			                        style={{
-				                        border: 'solid 1px black',
-				                        fontSize: 8,
-				                        textAlign: 'center',
-				                        marginRight: 10,
-				                        width: 12,
-				                        height: 16,
-			                        }}
-			                    >
-			                      	F
-			                    </div>
-			                  ]
+				                icons: rowInfo.node.isDirectory
+				                ? [
+				                    <div
+				                    	onClick={() => changeTableList(rowInfo)}
+				                        style={{
+					                        borderLeft: 'solid 8px gray',
+					                        borderBottom: 'solid 10px gray',
+					                        marginRight: 10,
+					                        width: 10,
+					                        height: 3,
+					                        filter: rowInfo.node.expanded
+					                          ? 'drop-shadow(1px 0 0 gray) drop-shadow(0 1px 0 gray) drop-shadow(0 -1px 0 gray) drop-shadow(-1px 0 0 gray)'
+					                          : 'none',
+					                        borderColor: rowInfo.node.expanded ? 'white' : 'gray',
+				                        }}
+				                    />
+				                  ]
+				                : [
+				                    <div
+				                        style={{
+					                        border: 'solid 1px black',
+					                        fontSize: 8,
+					                        textAlign: 'center',
+					                        marginRight: 10,
+					                        width: 12,
+					                        height: 16,
+				                        }}
+				                    >
+				                      	F
+				                    </div>
+				                  ]
 			            	})
 				        }
 			        />
@@ -117,7 +117,8 @@ const mapState = (state) => {
 		searchFocusIndex: state.get("home").get("searchFocusIndex"),
 		searchFoundCount: state.get("home").get("searchFoundCount"),
 		searchString: state.get("home").get("searchString"),
-		expanded: state.get("home").get("expanded")
+		expanded: state.get("home").get("expanded"),
+		tableList: state.get("home").get("tableList")
 	}
 }
 
@@ -143,6 +144,9 @@ const mapDispatch = (dispatch) => {
 		},
 		handleChangeTreeData: (treeData) => {
 			dispatch(actionCreator.expandedForAll(treeData))
+		},
+		changeTableList: ({node}) => {
+			dispatch(actionCreator.changeTableListData(node.children))
 		}
 	}
 }

@@ -7,27 +7,54 @@ import "react-table/react-table.css";
 import { HomeWrapper, HomeLeft, HomeRight, Top, BtnLeft, BtnRight, SearchWrapper, Body } from './style';
 
 class Home extends Component{
+	constructor(){
+		super()
+		this.renderEditable = this.renderEditable.bind(this)
+	}
+	renderEditable(cellInfo) {
+	    return (
+	      <div
+	        contentEditable
+	        suppressContentEditableWarning
+	        onBlur={e => {
+	          const data = [...this.props.tableList];
+	          data[cellInfo.index][cellInfo.column.id] = e.target.innerHTML;
+	          this.props.changeTableList(data);
+	        }}
+	        dangerouslySetInnerHTML={{
+	          __html: this.props.tableList[cellInfo.index][cellInfo.column.id]
+	        }}
+	      />
+	    );
+	}
 	render(){
-		const data = [{
-		    "name": 'Tanner Linsley',
-		    "age": 26,
-		    "date": '2018-08-15'
-		  },{
-		    "name": 'Taley',
-		    "age": 23,
-		    "date": '2018-08-15'
-		  }]
+		const data = this.props.tableList
 
 		const columns = [{
-		    "Header": '文件名',
-		    accessor: 'name' 
+		    Header: '文件名',
+		    accessor: 'title',
+            Cell: this.renderEditable
 		  }, {
-		    Header: '大小',
-		    accessor: 'age'
-		  }, {
-		    Header: '修改日期',
-		    accessor: 'date'
-		  }]
+		    Header: '操作',
+            width: 250,
+            expander: true,
+            Expander: ({ isExpanded, ...rest }) =>
+                <div>{isExpanded ? <span>&#x2299;</span> : <span>&#x2295;</span>}</div>,
+                style: {
+	                cursor: "pointer",
+	                fontSize: 25,
+	                padding: "0"
+                }
+		    }, {
+			    Header: '大小',
+			    accessor: 'size',
+			    maxWidth: 200
+		    }, {
+			    Header: '修改日期',
+			    accessor: 'date',
+			    maxWidth: 350
+		    }]
+
 		return (
 			<HomeWrapper>
 				<HomeLeft>
@@ -36,16 +63,12 @@ class Home extends Component{
 				<HomeRight>
 					<Top>
 						<div>
-							<BtnLeft className="upload"><i className="iconfont upload">&#xe609;</i>上传</BtnLeft>
-							<BtnLeft><i className="iconfont newfolder">&#xe723;</i>新建文件夹</BtnLeft>
-							<BtnLeft><i className="iconfont download">&#xe64a;</i>离线下载</BtnLeft>
-							<BtnRight><i className="iconfont download">&#xe62e;</i></BtnRight>
-							<BtnRight><i className="iconfont download">&#xe647;</i></BtnRight>
-							<SearchWrapper>
-								<input placeholder="搜索文件" />
-								<i className="iconfont search">&#xe6cc;</i>
-								<i className="iconfont del">&#xe647;</i>
-							</SearchWrapper>
+							<BtnLeft>全部文件</BtnLeft>
+						</div>
+						<div>
+							<BtnRight className="upload"><i className="iconfont upload">&#xe609;</i>上传</BtnRight>
+							<BtnRight><i className="iconfont newfolder">&#xe723;</i>新建文件夹</BtnRight>
+							<BtnRight><i className="iconfont download">&#xe64a;</i>离线下载</BtnRight>
 						</div>
 					</Top>
 					<Body>
@@ -53,13 +76,14 @@ class Home extends Component{
 						    data={data}
 						    columns={columns}
 						    loading={false}
-						    showPagination={false}
-						    showPaginationTop={true}
+						    showPagination={true}
+						    showPaginationTop={false}
 						    showPaginationBottom={true}
 						    showPageSizeOptions={true}
 						    defaultPageSize={22}
 						    style={{ height: "780px" }}
 						    className="-highlight"
+						    filterable
 						/>
 					</Body>
 				</HomeRight>
@@ -68,4 +92,14 @@ class Home extends Component{
 	}
 }
 
-export default connect(null, null)(Home)
+const mapState = (state) => ({
+	tableList: state.get("home").get("tableList")
+})
+
+const mapDispatch = (dispatch) => ({
+	changeTableList: (list) => {
+		dispatch(actionCreator.changeTableListData(list))
+	}
+})
+
+export default connect(mapState, mapDispatch)(Home)
