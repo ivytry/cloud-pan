@@ -7,7 +7,9 @@ const defaultState = fromJS({
     searchFocusIndex: 0,
     searchFoundCount: null,
     expanded: false,
-    tableList: []
+    tableList: [],
+    selectAll: false,
+    selection: []
 })
 
 const reducer = (state = defaultState, action) => {
@@ -16,6 +18,10 @@ const reducer = (state = defaultState, action) => {
 			return state.set("fileTree", action.data).set("tableList", action.data);
 		case actionTypes.EXPANDED_FOR_ALL:
 			return state.set("fileTree", action.fileTree).set("expanded", action.expanded);
+		case actionTypes.CHANGE_CHECKBOX_PROPS:
+			return state.set("selection", action.selection).set("selectAll", action.selectAll);
+		case actionTypes.CHANGE_SELECTION:
+			return state.set("selection", action.selection)
 		case actionTypes.SELECT_SEARCH_MATCH:
 			return state.set("searchFocusIndex", action.index);
 		case actionTypes.CHANGE_SEARCH_STRING:

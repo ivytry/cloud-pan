@@ -2,8 +2,8 @@ import * as actionTypes from './actionTypes';
 import axios from 'axios';
 
 const initFileTreeData = (data) => ({
-	"type": actionTypes.INIT_TREE_DATA,
-	"data": data
+	type: actionTypes.INIT_TREE_DATA,
+	data
 })
 
 export const getInitFileTreeData = (flag) => {
@@ -18,28 +18,38 @@ export const getInitFileTreeData = (flag) => {
 
 export const expandedForAll = (fileTree, expanded) => ({
 	type: actionTypes.EXPANDED_FOR_ALL,
-	expanded: expanded,
+	expanded,
 	fileTree
 })
 
 export const searchedCallback = (count, index) => ({
 	type: actionTypes.SEARCHED_CALLBACK,
-    index: index,
-    count: count
+    index,
+    count
 })
 
 export const selectPrevMatchData = (index) => ({
 	type: actionTypes.SELECT_SEARCH_MATCH,
-    index: index
+    index
 })
 
 export const change = (value) => ({
 	type: actionTypes.CHANGE_SEARCH_STRING,
-    value: value
+    value
 })
 
-export const changeTableListData = (list) => ({
+export const changeTableListData = (tableList) => ({
 	type: actionTypes.CHANGE_TABLE_LIST,
-    tableList: list
+    tableList
 })
 
+export const changeCheckboxProps = (selectAll, selection) => ({
+	type: actionTypes.CHANGE_CHECKBOX_PROPS,
+    selectAll,
+    selection
+})
+
+export const changeSelection = (selection) => ({
+	type: actionTypes.CHANGE_SELECTION,
+    selection
+})

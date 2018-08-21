@@ -137,6 +137,28 @@ export const BtnRight = styled.div`
 	}
 `;
 
+export const BtnGroup = styled.div`
+	float:right;
+	button{
+		padding:0 16px;
+		height:36px;
+		line-height:36px;
+		border: 1px solid rgba(202,108,90,0.3);
+		font-size:12px;
+		margin-left:-1px;
+		color:#ea6f5a;
+		background:#fff;
+		&.share{
+			border-top-left-radius:5px;
+			border-bottom-left-radius:5px;
+		}
+		&.move{
+			border-top-right-radius:5px;
+			border-bottom-right-radius:5px;
+		}
+	}
+`;
+
 export const SearchWrapper = styled.div`
 	float:right;
 	margin-right:15px;
