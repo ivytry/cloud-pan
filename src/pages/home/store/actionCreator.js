@@ -38,9 +38,11 @@ export const change = (value) => ({
     value
 })
 
-export const changeTableListData = (tableList) => ({
+export const changeTableListData = (tableList, tableId, expanded) => ({
 	type: actionTypes.CHANGE_TABLE_LIST,
-    tableList
+    tableList,
+    tableId,
+    expanded
 })
 
 export const changeCheckboxProps = (selectAll, selection) => ({
@@ -52,4 +54,9 @@ export const changeCheckboxProps = (selectAll, selection) => ({
 export const changeSelection = (selection) => ({
 	type: actionTypes.CHANGE_SELECTION,
     selection
+})
+
+export const updateTreeData = (list) => ({
+	type: actionTypes.UPDATE_TREE_DATA,
+	list
 })

@@ -188,4 +188,19 @@ export const SearchWrapper = styled.div`
 
 export const Body = styled.div`
 	padding-left:20px;
+	.operate{
+		.iconfont{
+			margin-right:15px;
+			&.download{
+				font-size:20px;
+				color:#333;
+			}
+			&.del,&.copy,&.move{
+				color:#666;
+			}
+			&.copy{
+				color:#888;
+			}
+		}
+	}
 `;

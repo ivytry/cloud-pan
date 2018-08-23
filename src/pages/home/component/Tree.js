@@ -145,8 +145,9 @@ const mapDispatch = (dispatch) => {
 		handleChangeTreeData: (treeData) => {
 			dispatch(actionCreator.expandedForAll(treeData))
 		},
-		changeTableList: ({node}) => {
-			dispatch(actionCreator.changeTableListData(node.children))
+		changeTableList: ({node, path}) => {
+			console.log(path)
+			dispatch(actionCreator.changeTableListData(node.children, node.id, node.expanded))
 		}
 	}
 }

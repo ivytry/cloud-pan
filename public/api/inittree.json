@@ -2,39 +2,80 @@
     "success": true,
     "data": [
         {
-            "id": "002f56a3-eab8-5955-b6d6-f1ded426cd8d",
+            "id": "002f56a3-eab8-5955-b6d6-f1ded426cd11",
             "title": "word",
             "isDirectory": true,
             "expanded": false,
             "date": "2018-08-15 12:12",
             "size": "43M",
+            "father": "all",
             "children": [
                 {
-                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63beb4",
+                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be22",
                     "title": "styles.css",
+                    "isDirectory": true,
+                    "expanded": false,
                     "date": "2018-08-15 12:12",
-                    "size": "43M"
+                    "size": "43M",
+                    "father": "002f56a3-eab8-5955-b6d6-f1ded426cd11",
+                    "children": [
+                        {
+                            "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be33",
+                            "title": "styles.css",
+                            "isDirectory": true,
+                            "expanded": false,
+                            "date": "2018-08-15 12:12",
+                            "size": "43M",
+                            "father": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be22",
+                            "children": [
+                                {
+                                    "id": "9dc0fd23-6e71-5cc2-9413-9e3d6b63be44",
+                                    "title": "yigewenjian",
+                                    "date": "2018-08-15 12:12",
+                                    "father": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be33",
+                                    "size": "33M"
+                                },
+                                {
+                                    "id": "9dc0fd23-6e71-5cc2-9413-9e3d6b63be55",
+                                    "title": "yigewenjian",
+                                    "date": "2018-08-15 12:12",
+                                    "father": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be33",
+                                    "size": "33M"
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
-                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63beb1",
+                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be66",
                     "title": "index.js",
+                    "isDirectory": true,
+                    "expanded": false,
                     "date": "2018-08-15 12:12",
-                    "size": "43M"
+                    "size": "43M",
+                    "children": [
+                        {
+                            "id": "9dc03223-6e71-5cc2-9413-9e3d6b63be77",
+                            "title": "yigewe43ian",
+                            "date": "2018-08-15 12:12",
+                            "size": "32M"
+                        }
+                    ]
                 },
                 {
-                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63beb3",
+                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be88",
                     "title": "reducers.js",
                     "date": "2018-08-15 12:12",
                     "size": "43M"
                 },
                 {
-                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63beb5",
+                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be99",
                     "title": "actions.js",
                     "date": "2018-08-15 12:12",
                     "size": "43M"
                 },
                 {
-                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63beb7",
+                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be00",
                     "title": "utils.js",
                     "date": "2018-08-15 12:12",
                     "size": "43M"
