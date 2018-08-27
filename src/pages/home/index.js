@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { actionCreator } from './store';
 import Tree from './component/Tree';
@@ -7,16 +7,21 @@ import ReactTable from 'react-table';
 import checkboxHOC from "react-table/lib/hoc/selectTable";
 import "react-table/react-table.css";
 
-import { Breadcrumb } from 'antd';
+import { message, Breadcrumb, Modal, Radio, Input, Select, Icon } from 'antd';
+import 'antd/dist/antd.css';
+
 import { HomeWrapper, HomeLeft, HomeRight, Top, BtnLeft, BtnRight, BtnGroup, Body } from './style';
+
+import ShareModal from './component/ShareModal';
 
 const CheckboxTable = checkboxHOC(ReactTable);
 
-class Home extends Component{
+class Home extends PureComponent{
 	constructor(){
 		super()
 		this.renderEditable = this.renderEditable.bind(this)
 		this.showBtn = this.showBtn.bind(this)
+		this.shareModel = this.shareModel.bind(this)
 	};
 
 	renderEditable(cellInfo) {
@@ -83,9 +88,15 @@ class Home extends Component{
     	}
     }
 
+    shareModel(item){
+    	if(this.props.shareId === item.original.id){
+	    	return <ShareModal />
+	    }
+    }
+
 	render(){
-		const {isSelected, toggleSelection, toggleAll, showBtn} = this
-		const {path, selectAll, tableList, handleShare} = this.props
+		const {isSelected, toggleSelection, toggleAll, showBtn, shareModel} = this
+		const {path, selectAll, tableList, showShareModal, showDownloadModal} = this.props
 
 		const columns = [{
 		    Header: '文件名',
@@ -105,8 +116,9 @@ class Home extends Component{
             expander: true,
             Expander: (item) =>
                 <div className="operate">
-                	<i className="iconfont share" onClick={()=>{handleShare(item)}}>&#xe65b;</i>
-                	<i className="iconfont download">&#xe64a;</i>
+                	<i className="iconfont share" onClick={()=>{showShareModal(item.original.id)}}>&#xe65b;</i>
+                	{ shareModel(item) }
+                	<i className="iconfont download" onClick={()=>{showDownloadModal(item.original.id)}}>&#xe64a;</i>
                 	<i className="iconfont del">&#xe604;</i>
                 	<i className="iconfont copy">&#xe6c5;</i>
                 	<i className="iconfont move">&#xe60c;</i>
@@ -182,7 +194,12 @@ const mapState = (state) => ({
 	tableList: state.get("home").get("tableList"),
 	selectAll: state.get("home").get("selectAll"),
 	selection: state.get("home").get("selection"),
-	path: state.get("home").get("path")
+	path: state.get("home").get("path"),
+	shareId: state.get("home").get("shareId"),
+	shareVisible: state.get("home").get("shareVisible"),
+	shareForm: state.get("home").get("shareForm"),
+	shareExpiry: state.get("home").get("shareExpiry"),
+	okSuccess: state.get("home").get("okSuccess")
 })
 
 const mapDispatch = (dispatch) => ({
@@ -195,8 +212,20 @@ const mapDispatch = (dispatch) => ({
 	changeSelection: (selection) => {
 		dispatch(actionCreator.changeSelection(selection))
 	},
-	handleShare: (item) => {
-		console.log(item.original)
+	showShareModal: (id) => {
+    	dispatch(actionCreator.changeShareVisible(id, true))
+	},
+	handleCancel: (id) => {
+	    dispatch(actionCreator.changeShareVisible(id, false))
+	},
+	shareForm: (e) => {
+		dispatch(actionCreator.getShareForm(e.target.value))
+	},
+	handleChangeExpiry: (value) => {
+		dispatch(actionCreator.changeExpiry(value))
+	},
+	showDownloadModal: (id) => {
+
 	}
 })
 

@@ -12,7 +12,12 @@ const defaultState = fromJS({
     selectAll: false,
     selection: [],
     tableId: '',
-    path: ['全部文件']
+    path: ['全部文件'],
+    shareId: '',
+    shareVisible: false,
+    shareForm: 1,
+    shareExpiry: 0,
+    okSuccess: false
 })
 
 function getData(testData) {
@@ -40,20 +45,6 @@ function getTree(tree, tableid, state, action){
 	})
 }
 
-function changeExpanded(id, state){
-	let tree = state.get("fileTree")
-	tree.map(function(item){
-		if(id === item.id){
-			item.expanded = item.expanded ? false : true
-			return
-		}else{
-			if(item.children){
-				changeExpanded(item.children, id)
-			}
-		}
-	})
-}
-
 const updateTreeData = (state, action) => {
 	let tree = state.get("fileTree")
 	let tableid = state.get("tableId")
@@ -66,7 +57,6 @@ const updateTreeData = (state, action) => {
 }
 
 const changeTableList = (state, action) => {
-	changeExpanded(action.tableId, state)
 	return state.set("tableList", getData(action.tableList)).set("tableId", action.tableId);
 }
 
@@ -84,13 +74,24 @@ const reducer = (state = defaultState, action) => {
 			return state.set("searchFocusIndex", action.index);
 		case actionTypes.CHANGE_SEARCH_STRING:
 			return state.set("searchString", action.value);
+		case actionTypes.CHANGE_SHARE_FORM:
+			return state.set("shareFormVal", action.shareFormVal);
+		case actionTypes.CHANGE_SHARE_EXPIRY:
+			return state.set("shareExpiry", action.shareExpiry);
+		case actionTypes.CHANGE_OK_SUCCESS:
+			return state.set("okSuccess", action.okSuccess);
 		case actionTypes.CHANGE_TABLE_LIST:
 			return changeTableList(state, action);
 		case actionTypes.UPDATE_TREE_DATA:
 			return updateTreeData(state, action);
+		case actionTypes.CHANGE_SHARE_VISIBLE:
+			return state.merge({
+			    shareId: action.id,
+			    shareVisible: action.visible
+			})
 		case actionTypes.SEARCHED_CALLBACK:
 			return state.merge({
-			    searchFocusIndex: action.index,
+				searchFocusIndex: action.index,
 			    searchFoundCount: action.count
 			})
 		default:

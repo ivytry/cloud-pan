@@ -60,3 +60,24 @@ export const updateTreeData = (list) => ({
 	type: actionTypes.UPDATE_TREE_DATA,
 	list
 })
+
+export const changeShareVisible = (id, visible) => ({
+	type: actionTypes.CHANGE_SHARE_VISIBLE,
+	id,
+	visible
+})
+
+export const changeOkSuccess = (okSuccess) => ({
+	type: actionTypes.CHANGE_OK_SUCCESS,
+	okSuccess
+})
+
+export const getShareForm = (shareFormVal) => ({
+	type: actionTypes.CHANGE_SHARE_FORM,
+	shareFormVal
+})
+
+export const changeExpiry = (shareExpiry) => ({
+	type: actionTypes.CHANGE_SHARE_EXPIRY,
+	shareExpiry
+})
