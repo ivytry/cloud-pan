@@ -2,7 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { actionCreator } from '../store';
 
-import { message, Breadcrumb, Modal, Radio, Input, Select, Icon } from 'antd';
+import { message, Modal, Radio, Input, Select, Icon } from 'antd';
 import 'antd/dist/antd.css';
 
 const RadioGroup = Radio.Group;
@@ -49,17 +49,17 @@ class ShareModal extends PureComponent{
     }
 
 	render(){
-		const { okSuccess, shareId, shareVisible, handleOk, handleCancel } = this.props
+		const { okSuccess, shareItem, shareVisible, handleOk, handleCancel } = this.props
 		return (
 			<Modal
-	          title={"分享文件(夹): "+item.original.title}
+	          title={"分享文件(夹): "+shareItem.get("title")}
 	          visible={shareVisible}
 	          cancelText="取消"
 	          centered={true}
 	          maskClosable={true}
 	          okText={okSuccess ? "复制链接及密码" : "创建链接"}
 	          onOk={okSuccess ? this.handleCopy : handleOk}
-	          onCancel={handleCancel}
+	          onCancel={()=>{handleCancel(shareItem)}}
 	        >
 	        	{this.shareModelInner()}
 	        </Modal>
@@ -68,29 +68,27 @@ class ShareModal extends PureComponent{
 }
 
 const mapState = (state) => ({
-	shareId: state.get("home").get("shareId"),
+	shareItem: state.get("home").get("shareItem"),
 	shareVisible: state.get("home").get("shareVisible"),
 	shareForm: state.get("home").get("shareForm"),
 	shareExpiry: state.get("home").get("shareExpiry"),
 	okSuccess: state.get("home").get("okSuccess")
 })
 
-const mapDispatch = (dispatch) => {
-	return {
-		handleOk: () => {
-		    dispatch(actionCreator.changeOkSuccess(true))
-		    success("创建成功")
-		},
-		handleCancel: (id) => {
-		    dispatch(actionCreator.changeShareVisible(id, false))
-		},
-		shareForm: (e) => {
-			dispatch(actionCreator.getShareForm(e.target.value))
-		},
-		handleChangeExpiry: (value) => {
-			dispatch(actionCreator.changeExpiry(value))
-		}
+const mapDispatch = (dispatch) => ({
+	handleOk: () => {
+	    dispatch(actionCreator.changeOkSuccess(true))
+	    success("创建成功")
+	},
+	handleCancel: (item) => {
+	    dispatch(actionCreator.changeShareVisible(item, false, ""))
+	},
+	shareForm: (e) => {
+		dispatch(actionCreator.getShareForm(e.target.value))
+	},
+	handleChangeExpiry: (value) => {
+		dispatch(actionCreator.changeExpiry(value))
 	}
-}
+})
 
 export default connect(mapState, mapDispatch)(ShareModal)

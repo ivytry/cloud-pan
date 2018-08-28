@@ -1,18 +1,5 @@
 import styled from 'styled-components';
 
-export const HomeWrapper = styled.div`
-	margin: 0 auto;
-    min-width: 1366px;
-	overflow:hidden;
-`;
-
-export const HomeLeft = styled.div`
-	width:200px
-	border-right: 1px solid #f0f0f0;
-	padding:20px 0 20px 10px;
-	float:left;
-`;
-
 export const TreeRoot = styled.div`
 	.treeSearchInput{
 		width:125px;
@@ -81,17 +68,6 @@ export const TreeRoot = styled.div`
 	}
 `;
 
-export const HomeRight = styled.div`
-	@media (max-width:1920px) and (min-width:1680px){
-		width:1682px;
-	}
-	@media (max-width:1366px) and (min-width:1024px){
-		width:1140px;
-	}
-    overflow:hidden;
-    float:left;
-`;
-
 export const Top = styled.div`
 	padding:15px 20px;
 	overflow:hidden;
@@ -102,60 +78,13 @@ export const BtnLeft = styled.div`
 	margin-top:18px;
 	font-size:12px;
 	color:#666;
+	cursor: pointer;
 `;
 
 export const BtnRight = styled.div`
 	float:right;
-	padding:0 16px;
-	height:34px;
-	line-height:34px;
-	border: 1px solid rgba(202,108,90,0.3);
-	border-radius:5px;
-	font-size:12px;
-	margin-left:10px;
-	color:#ea6f5a;
-	.iconfont{
-		font-weight:700;
-		float:left;
-	}
-	&.upload{
-		background:#ea6f5a;
-		color:white;
-		margin-right:-18px;
-	}
-	.upload{
-		font-size:1px;
-		margin-right:12px;
-	}
-	.download{
-		margin-right:5px;
-		font-size:20px;
-	}
-	.newfolder{
-		font-size:15px;
-		margin-right:6px;
-	}
-`;
-
-export const BtnGroup = styled.div`
-	float:right;
-	button{
-		padding:0 16px;
-		height:36px;
-		line-height:36px;
-		border: 1px solid rgba(202,108,90,0.3);
-		font-size:12px;
-		margin-left:-1px;
-		color:#ea6f5a;
-		background:#fff;
-		&.share{
-			border-top-left-radius:5px;
-			border-bottom-left-radius:5px;
-		}
-		&.move{
-			border-top-right-radius:5px;
-			border-bottom-right-radius:5px;
-		}
+	Button{
+		margin-left:10px;
 	}
 `;
 

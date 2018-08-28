@@ -61,10 +61,11 @@ export const updateTreeData = (list) => ({
 	list
 })
 
-export const changeShareVisible = (id, visible) => ({
+export const changeShareVisible = (item, visible, modalType) => ({
 	type: actionTypes.CHANGE_SHARE_VISIBLE,
-	id,
-	visible
+	item,
+	visible,
+	modalType
 })
 
 export const changeOkSuccess = (okSuccess) => ({

@@ -11,13 +11,16 @@ const defaultState = fromJS({
     tableList: [],
     selectAll: false,
     selection: [],
+
     tableId: '',
     path: ['全部文件'],
-    shareId: '',
+    
+    shareItem: {},
     shareVisible: false,
     shareForm: 1,
     shareExpiry: 0,
-    okSuccess: false
+    okSuccess: false,
+    modalType: ''
 })
 
 function getData(testData) {
@@ -86,8 +89,9 @@ const reducer = (state = defaultState, action) => {
 			return updateTreeData(state, action);
 		case actionTypes.CHANGE_SHARE_VISIBLE:
 			return state.merge({
-			    shareId: action.id,
-			    shareVisible: action.visible
+			    shareItem: action.item,
+			    shareVisible: action.visible,
+			    modalType: action.modalType
 			})
 		case actionTypes.SEARCHED_CALLBACK:
 			return state.merge({

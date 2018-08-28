@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionCreator } from './store';
+
+import { Breadcrumb, Popover, Button, Input, Row, Col, Menu } from 'antd';
+import 'antd/dist/antd.css';
 import {
-	HeaderWrapper,
-	HeaderInner,
 	Logo,
 	Nav,
 	NavItem,
@@ -64,46 +65,61 @@ class Header extends Component{
 	render(){
 		const { showBox, handleShowBox, handleShowClassify, handleShowSpace } = this.props
 		return (
-			<HeaderWrapper>
-				<Logo></Logo>
-				<HeaderInner>
-					<Nav>
-						<NavItem className="left active" href="/">网盘</NavItem>
-						<NavItem 
-							className="left classify"
-							onMouseEnter={() => {handleShowClassify(true)}} 
-							onMouseLeave={() => {handleShowClassify(false)}}
+			<div style={{"clear": "both"}}>
+				<Row style={{"height":"56px", "border-bottom": "1px solid #f0f0f0"}}>
+					<Col xs={4} sm={4} md={4} lg={3} xl={3}>
+						<Logo></Logo>
+					</Col>
+					<Col xs={16} sm={16} md={16} lg={18} xl={18}>
+						<div>
+							<Menu
+						        onClick={this.handleClick}
+						        selectedKeys={"horizontal"}
+						        mode="horizontal"
+					        >
+					        	<Menu.Item key="home" style={{"margin-top":"6px"}}>网盘</Menu.Item>
+					        	<Menu.Item key="type" 
+					        		style={{"margin-top":"6px"}}
+									className="left classify"
+									onMouseEnter={() => {handleShowClassify(true)}} 
+									onMouseLeave={() => {handleShowClassify(false)}}
+					        	>
+					        		分类
+					        		{ this.isShowClassifyUI() }
+					        	</Menu.Item>
+					        	<Menu.Item key="share" style={{"margin-top":"6px"}}>分享</Menu.Item>
+					        	<Menu.Item key="foot" style={{"margin-top":"6px"}}>足迹</Menu.Item>
+					        	<Menu.Item key="download" style={{"margin-top":"6px"}}>下载</Menu.Item>
+					        	<Menu.Item key="trash" style={{"margin-top":"6px"}}>回收站</Menu.Item>
+							</Menu>
+						</div>
+						<div>
+							<NavItem className="right"><i className="iconfont">&#xe600;</i></NavItem>
+							<NavItem className="right"><i className="iconfont">&#xe667;</i></NavItem>
+							<User 
+								onMouseEnter={() => {handleShowBox(true)}} 
+								onMouseLeave={() => {handleShowBox(false)}}
+							>
+								<img src="//upload.jianshu.io/collections/images/540903/1f2936a662509e7d64528466be5546f4_r.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/180/h/180" alt=""/> 
+								ivytry2015 
+								<i className="iconfont member">&#xe692;</i> 
+								<i className="iconfont up" dangerouslySetInnerHTML={{ __html: showBox ? '&#xe60d;' : '&#xe60a;' }}></i>
+								<span>|</span>
+								{ this.isShowBoxUI() }
+							</User>
+						</div>
+					</Col>
+					<Col xs={4} sm={4} md={4} lg={3} xl={3}>
+						<SpaceBox
+							onMouseEnter={() => {handleShowSpace(true)}} 
+							onMouseLeave={() => {handleShowSpace(false)}}
 						>
-							分类
-							{ this.isShowClassifyUI() }
-						</NavItem>
-						<NavItem className="left share">分享</NavItem>
-						<NavItem className="left share">足迹</NavItem>
-						<NavItem className="left share">下载</NavItem>
-						<NavItem className="left share">回收站</NavItem>
-						<NavItem className="right"><i className="iconfont">&#xe600;</i></NavItem>
-						<NavItem className="right"><i className="iconfont">&#xe667;</i></NavItem>
-						<User 
-							onMouseEnter={() => {handleShowBox(true)}} 
-							onMouseLeave={() => {handleShowBox(false)}}
-						>
-							<img src="//upload.jianshu.io/collections/images/540903/1f2936a662509e7d64528466be5546f4_r.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/180/h/180" alt=""/> 
-							ivytry2015 
-							<i className="iconfont member">&#xe692;</i> 
-							<i className="iconfont up" dangerouslySetInnerHTML={{ __html: showBox ? '&#xe60d;' : '&#xe60a;' }}></i>
-							<span>|</span>
-							{ this.isShowBoxUI() }
-						</User>
-					</Nav>
-					<SpaceBox
-						onMouseEnter={() => {handleShowSpace(true)}} 
-						onMouseLeave={() => {handleShowSpace(false)}}
-					>
-						<a className="full">30%</a>
-						{ this.isShowSpaceUI() }
-					</SpaceBox>
-				</HeaderInner>
-			</HeaderWrapper>
+							<a href="#">30%</a>
+							{ this.isShowSpaceUI() }
+						</SpaceBox>
+					</Col>
+				</Row>
+			</div>
 		)
 	}
 	componentDidMount(){

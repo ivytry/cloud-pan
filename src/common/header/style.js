@@ -1,16 +1,6 @@
 import styled from 'styled-components';
 import logopic from '../../logo.png';
 
-export const HeaderWrapper = styled.div`
-	height:56px;
-	border-bottom: 1px solid #f0f0f0;
-`;
-
-export const HeaderInner = styled.div`
-	height:56px;
-	float:left;
-`;
-
 export const Logo = styled.a.attrs({
 	"href":'/'
 })`
@@ -20,21 +10,6 @@ export const Logo = styled.a.attrs({
 	display:block;
 	background:url(${logopic}) no-repeat 22px center;
 	background-size:contain;
-	float:left;
-`;
-
-export const Nav = styled.div`
-	@media (max-width:1920px) and (min-width:1680px){
-		width:1400px;
-	}
-	@media (max-width:1366px) and (min-width:1024px){
-		width:900px;
-	}
-	.share, .more{
-		&:hover{
-			background:#f6f6f6;
-		}
-	}
 `;
 
 export const NavItem = styled.a`
@@ -147,19 +122,15 @@ export const Title = styled.div`
 `;
 
 export const SpaceBox = styled.div`
-	font-size:14px;
     height: 20px;
     line-height: 20px;
     border-radius: 20px;
     display:inline-block;
     margin: 17px 15px 8px 0;
     border: 1px solid rgba(236,97,73,.7);
-	float:right;
-	position:absolute;
-	top:0;
-	right:0;
 	width:180px;
 	cursor:pointer;
+	float:right;
 	a{
 	    height: 20px;
 	    width:60px;
@@ -173,15 +144,12 @@ export const SpaceBox = styled.div`
 `;
 
 export const SpaceHover = styled.div`
-	width: 140px;
+	width: 180px;
     background: #fff;
     box-shadow: 0 0 8px rgba(0,0,0,.2);
     border: 1px solid rgba(236,97,73,.7);
     border-radius:4px;
-    position: absolute;
     padding:10px 20px;
-    left: 0;
-    top: 42px;
     z-index: 1;
 `;
 

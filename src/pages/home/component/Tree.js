@@ -6,11 +6,10 @@ import SortableTree, { toggleExpandedForAll } from 'react-sortable-tree';
 import FileExplorerTheme from 'react-sortable-tree-theme-file-explorer';
 
 class Tree extends PureComponent{
-	
 	render(){
 		const { fileTree, expanded, searchString, searchFocusIndex, searchFoundCount, changeTableList, handleChangeTreeData, handleChange, expandAll, selectPrevMatch, selectNextMatch, handleSearchFinishCallback } = this.props
 		return (
-			<TreeRoot id="root">
+			<TreeRoot id="root" style={{"padding":"20px 0 20px 10px"}}>
 	            <form onSubmit={event => { event.preventDefault() }}>
 	                <input
 	                	className="treeSearchInput"
