@@ -1,43 +1,58 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { actionCreator } from '../store';
-import { TreeRoot } from '../style';
 import SortableTree, { toggleExpandedForAll } from 'react-sortable-tree';
 import FileExplorerTheme from 'react-sortable-tree-theme-file-explorer';
 
+import 'antd/dist/antd.css';
+import { Input, Button, Icon, Divider } from 'antd';
+import { TreeRoot } from '../style';
+
 class Tree extends PureComponent{
+	showPage(){
+		const { searchFocusIndex, searchFoundCount } = this.props
+		if(searchFoundCount){
+			return (
+				<span>
+	              &nbsp;
+	              {searchFoundCount > 0 ? searchFocusIndex + 1 : 0}
+	              &nbsp;/&nbsp;
+	              {searchFoundCount || 0}
+	            </span>
+			)
+		}
+	}
+
+	showBtn(){
+		const { searchFocusIndex, searchFoundCount, selectPrevMatch, selectNextMatch } = this.props
+		return (
+			<div>
+        		<Icon 
+        			type="left"
+            		onClick={()=>{selectPrevMatch(searchFocusIndex, searchFoundCount)}}
+        		/>
+        		<Divider type="vertical" />
+       		    <Icon 
+       		    	type="right" 
+            		onClick={()=>{selectNextMatch(searchFocusIndex, searchFoundCount)}}
+       		    />
+			</div>
+		)
+	}
+
 	render(){
 		const { fileTree, expanded, searchString, searchFocusIndex, searchFoundCount, changeTableList, handleChangeTreeData, handleChange, expandAll, selectPrevMatch, selectNextMatch, handleSearchFinishCallback } = this.props
 		return (
 			<TreeRoot id="root" style={{"padding":"20px 0 20px 10px"}}>
-	            <form onSubmit={event => { event.preventDefault() }}>
-	                <input
-	                	className="treeSearchInput"
-		                type="text"
+	            <form onSubmit={event => { event.preventDefault() }} style={{"padding-right": "10px"}}>
+		            <Input.Search
+		            	size="small"
 		                placeholder="搜索文件"
 		                value={searchString}
-		                onChange={event => { handleChange(event) }}
-	                />
-		            <button
-		              type="button"
-		              disabled={!searchFoundCount}
-		              onClick={()=>{selectPrevMatch(searchFocusIndex, searchFoundCount)}}
-		            >
-		              &lt;
-		            </button>
-		            <button
-		              type="submit"
-		              disabled={!searchFoundCount}
-		              onClick={()=>{selectNextMatch(searchFocusIndex, searchFoundCount)}}
-		            >
-		              &gt;
-		            </button>
-		            <span>
-		              &nbsp;
-		              {searchFoundCount > 0 ? searchFocusIndex + 1 : 0}
-		              &nbsp;/&nbsp;
-		              {searchFoundCount || 0}
-		            </span>
+		                onChange={event => { handleChange(event)}}
+		                enterButton={this.showBtn()}
+				    />
+		            {this.showPage()}
 	            </form>
 				<div className="all active" father="root">
 					<i className="iconfont">&#xe636;</i>
@@ -105,50 +120,47 @@ class Tree extends PureComponent{
 			</TreeRoot>
 		)
 	}
+
 	componentDidMount(){
 		this.props.initFileTreeData()
 	}
 }
 
-const mapState = (state) => {
-	return {
-		fileTree: state.get("home").get("fileTree"),
-		searchFocusIndex: state.get("home").get("searchFocusIndex"),
-		searchFoundCount: state.get("home").get("searchFoundCount"),
-		searchString: state.get("home").get("searchString"),
-		expanded: state.get("home").get("expanded"),
-		tableList: state.get("home").get("tableList")
-	}
-}
+const mapState = (state) => ({
+	fileTree: state.get("home").get("fileTree"),
+	searchFocusIndex: state.get("home").get("searchFocusIndex"),
+	searchFoundCount: state.get("home").get("searchFoundCount"),
+	searchString: state.get("home").get("searchString"),
+	expanded: state.get("home").get("expanded"),
+	tableList: state.get("home").get("tableList")
+})
 
-const mapDispatch = (dispatch) => {
-	return {
-		initFileTreeData: () => {
-			dispatch(actionCreator.getInitFileTreeData())
-		},
-		expandAll: (fileTree, expanded) => {
-	        dispatch(actionCreator.expandedForAll(toggleExpandedForAll({treeData: fileTree, expanded}), expanded))
-		},
-		handleSearchFinishCallback: (matches, searchFocusIndex) => {
-			dispatch(actionCreator.searchedCallback(matches.length, matches.length > 0 ? searchFocusIndex % matches.length : 0))
-		},
-		selectPrevMatch: (index, count) => {
-			dispatch(actionCreator.selectPrevMatchData(index !== null ? (count + index - 1) % count : count - 1))
-	     },
-		selectNextMatch: (index, count) => {
-			dispatch(actionCreator.selectPrevMatchData(index !== null ? (index + 1) % count : 0))
-		},
-		handleChange: (e) => {
-			dispatch(actionCreator.change(e.target.value))
-		},
-		handleChangeTreeData: (treeData) => {
-			dispatch(actionCreator.expandedForAll(treeData))
-		},
-		changeTableList: ({node, path}) => {
-			console.log(path)
-			dispatch(actionCreator.changeTableListData(node.children, node.id, node.expanded))
-		}
+const mapDispatch = (dispatch) => ({
+	initFileTreeData: () => {
+		dispatch(actionCreator.getInitFileTreeData())
+	},
+	expandAll: (fileTree, expanded) => {
+        dispatch(actionCreator.expandedForAll(toggleExpandedForAll({treeData: fileTree, expanded}), expanded))
+	},
+	handleSearchFinishCallback: (matches, searchFocusIndex) => {
+		dispatch(actionCreator.searchedCallback(matches.length, matches.length > 0 ? searchFocusIndex % matches.length : 0))
+	},
+	selectPrevMatch: (index, count) => {
+		dispatch(actionCreator.selectPrevMatchData(index !== null ? (count + index - 1) % count : count - 1))
+     },
+	selectNextMatch: (index, count) => {
+		dispatch(actionCreator.selectPrevMatchData(index !== null ? (index + 1) % count : 0))
+	},
+	handleChange: (e) => {
+		dispatch(actionCreator.change(e.target.value))
+	},
+	handleChangeTreeData: (treeData) => {
+		dispatch(actionCreator.expandedForAll(treeData))
+	},
+	changeTableList: ({node, path}) => {
+		console.log(path)
+		dispatch(actionCreator.changeTableListData(node.children, node.id, node.expanded))
 	}
-}
+})
 
 export default connect(mapState, mapDispatch)(Tree)

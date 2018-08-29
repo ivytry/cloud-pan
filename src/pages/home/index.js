@@ -7,9 +7,8 @@ import ReactTable from 'react-table';
 import checkboxHOC from "react-table/lib/hoc/selectTable";
 import "react-table/react-table.css";
 
-import { Breadcrumb, Popover, Button, Input, Row, Col } from 'antd';
 import 'antd/dist/antd.css';
-
+import { Breadcrumb, Popover, Button, Input, Row, Col, Popconfirm, Icon, Upload, message, Drawer } from 'antd';
 import { Top, BtnLeft, BtnRight, Body } from './style';
 
 import ShareModal from './component/ShareModal';
@@ -128,9 +127,22 @@ class Home extends PureComponent{
 		}
     }
 
+    showUpload(file, fileList, visible){
+    	return (
+    		<Drawer
+	          title="上传列表"
+	          placement="right"
+	          closable={false}
+	          visible={visible}
+	        >
+	            <p>{fileList}</p>
+	        </Drawer>
+    	)
+    }
+
 	render(){
-		const {isSelected, toggleSelection, toggleAll, showBtn, showModel} = this
-		const {path, selectAll, tableList, showShareModal, showDownloadModal} = this.props
+		const { isSelected, toggleSelection, toggleAll, showBtn, showModel, showUpload } = this
+		const { path, selectAll, tableList, showShareModal, showDownloadModal } = this.props
 		const columns = [{
 		    Header: '文件名',
 		    accessor: 'title',
@@ -181,7 +193,16 @@ class Home extends PureComponent{
 		        };
 		    }
 		};
-
+		const onChange = (info) => {
+		    if (info.file.status !== 'uploading') {
+		    	showUpload(info.file, info.fileList, true)
+		    }
+		    if (info.file.status === 'done') {
+		      message.success(`${info.file.name} 文件上传成功`);
+		    } else if (info.file.status === 'error') {
+		      message.error(`${info.file.name} 文件上传失败.`);
+		    }
+		}
 		return (
 			<div style={{"clear": "both"}}>
 				<Row>
@@ -197,16 +218,25 @@ class Home extends PureComponent{
 							</BtnLeft>
 							<BtnRight>
 								{showBtn()}
-							    <Popover
-							        content={<div><Button type="primary">确定</Button><Button type="default">取消</Button></div>}
-							        title={<Input value="新建文件夹" />}
-							        trigger="click"
-							        visible={true}
-							        onVisibleChange={this.handleVisibleChange}
+								<Popconfirm 
+									title={<Input value="新建文件夹" />} 
+									icon={<Icon type="plus-circle-o" style={{ fontSize: '20px', color: "#ccc" }} />}
+									cancelText="取消"
+									okText="确定"
+								>
+								    <Button type="default" icon="folder-add" className="new">新建文件夹</Button>
+								</Popconfirm>
+						        <Upload 
+						        	name='file'
+									action='http://localhost:8080/'
+									showUploadList={false}
+									headers={{
+									    authorization: 'authorization-text'
+									}}
+									onChange= {(info) => onChange(info)}
 						        >
-						        	<Button type="default" icon="folder-add" className="new">新建文件夹</Button>
-						        </Popover>
-						        <Button type="primary" icon="upload" className="upload">上传</Button>
+						        	<Button type="primary" icon="upload" className="upload">上传</Button>
+						        </Upload>
 							</BtnRight>
 						</Top>
 						<Body>

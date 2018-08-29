@@ -1,69 +1,63 @@
-import React, { Component } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { actionCreator } from './store';
 
-import { Breadcrumb, Popover, Button, Input, Row, Col, Menu } from 'antd';
 import 'antd/dist/antd.css';
-import {
-	Logo,
-	Nav,
-	NavItem,
-	SpaceBox,
-	User,
-	UserMsgBox,
-	Title,
-	ClassifyList,
-	SpaceHover
-} from './style';
+import { Breadcrumb, Popover, Button, Input, Row, Col, Menu, Avatar, Icon, Divider, Dropdown, List } from 'antd';
+import { Logo, NavItem, SpaceBox, User, Title, ClassifyList, SpaceHover } from './style';
 
-class Header extends Component{
-	isShowBoxUI(){
-		if(this.props.showBox){
-			return (
-				<UserMsgBox>
-					<Title>
-						<img src="//upload.jianshu.io/collections/images/540903/1f2936a662509e7d64528466be5546f4_r.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/180/h/180" alt=""/> 
-						ivytry2015 
-						<i className="iconfont member">&#xe692;</i> 
-					</Title>
-					<div className="itembox">
-						<a>个人资料</a>
-						<a>设置密码</a>
-						<a>帮助中心</a>
-						<a>退出</a>
-					</div>
-				</UserMsgBox>
-			)
-		}
+class Header extends PureComponent{
+	showBoxUI(){
+		const userConf = [
+		  '个人资料',
+		  '设置密码',
+		  '帮助中心',
+		  '退出'
+		];
+		return (
+			<Fragment>
+				<Title>
+					<a href="#"><Avatar size={64} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /></a>
+					<a href="#">ivytry2015</a>
+				</Title>
+				<List
+			      size="small"
+			      dataSource={userConf}
+			      style={{"font-size": "12px"}}
+			      renderItem={item => (<List.Item class="Item"><a href="#">{item}</a></List.Item>)}
+			    />
+			</Fragment>
+		)
 	}
-	isShowClassifyUI(){
-		const { showClassify, classifyList } = this.props
-		if(showClassify){
-			return (
-				<ClassifyList>
-					{
-						classifyList.map((item)=>{
-							return <li key={item.get("id")}>{item.get("name")}</li>
-						})
-					}
-				</ClassifyList>
-			)
-		}
+
+	classifyUI(){
+		return (
+			<Menu>
+				{
+					this.props.classifyList.map((item)=>{
+						return (
+							<Menu.Item key={item.get("id")} style={{"padding":"0 20px", "left": "-10px"}}>
+						      <a rel="noopener noreferrer" href="#">{item.get("name")}</a>
+						    </Menu.Item>
+					    )
+					})
+				}
+			</Menu>
+		)
 	}
-	isShowSpaceUI(){
-		const { showSpace, space } = this.props
-		if(showSpace){
-			return (
-				<SpaceHover>
-					<p>剩余：{space.get("rest")}</p> 
-					<p>已使用：{space.get("rest")}</p> 
-					<p>总共有：{space.get("total")}</p>
-				</SpaceHover>
-			)
-		}
+
+	showSpaceUI(){
+		const { space } = this.props
+		return (
+			<Fragment>
+				<p>已使用：{space.get("rest")}</p>
+				<p>剩余：{space.get("rest")}</p>
+				<p>总共有：{space.get("total")}</p>
+			</Fragment>
+		)
 	}
+
 	render(){
-		const { showBox, handleShowBox, handleShowClassify, handleShowSpace } = this.props
 		return (
 			<div style={{"clear": "both"}}>
 				<Row style={{"height":"56px", "border-bottom": "1px solid #f0f0f0"}}>
@@ -71,21 +65,17 @@ class Header extends Component{
 						<Logo></Logo>
 					</Col>
 					<Col xs={16} sm={16} md={16} lg={18} xl={18}>
-						<div>
+						<div style={{"float": "left"}}>
 							<Menu
 						        onClick={this.handleClick}
 						        selectedKeys={"horizontal"}
 						        mode="horizontal"
 					        >
 					        	<Menu.Item key="home" style={{"margin-top":"6px"}}>网盘</Menu.Item>
-					        	<Menu.Item key="type" 
-					        		style={{"margin-top":"6px"}}
-									className="left classify"
-									onMouseEnter={() => {handleShowClassify(true)}} 
-									onMouseLeave={() => {handleShowClassify(false)}}
-					        	>
-					        		分类
-					        		{ this.isShowClassifyUI() }
+					        	<Menu.Item key="type" style={{"margin-top":"6px", "padding": "0"}}>
+					        		<Dropdown overlay={this.classifyUI()}>
+					        			<a href="#" style={{"padding":"0 20px"}}>分类</a>
+					        		</Dropdown>
 					        	</Menu.Item>
 					        	<Menu.Item key="share" style={{"margin-top":"6px"}}>分享</Menu.Item>
 					        	<Menu.Item key="foot" style={{"margin-top":"6px"}}>足迹</Menu.Item>
@@ -93,35 +83,30 @@ class Header extends Component{
 					        	<Menu.Item key="trash" style={{"margin-top":"6px"}}>回收站</Menu.Item>
 							</Menu>
 						</div>
-						<div>
-							<NavItem className="right"><i className="iconfont">&#xe600;</i></NavItem>
-							<NavItem className="right"><i className="iconfont">&#xe667;</i></NavItem>
-							<User 
-								onMouseEnter={() => {handleShowBox(true)}} 
-								onMouseLeave={() => {handleShowBox(false)}}
-							>
-								<img src="//upload.jianshu.io/collections/images/540903/1f2936a662509e7d64528466be5546f4_r.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/180/h/180" alt=""/> 
-								ivytry2015 
-								<i className="iconfont member">&#xe692;</i> 
-								<i className="iconfont up" dangerouslySetInnerHTML={{ __html: showBox ? '&#xe60d;' : '&#xe60a;' }}></i>
-								<span>|</span>
-								{ this.isShowBoxUI() }
-							</User>
+						<div style={{"float": "right", "height": "56px"}}>
+							<Popover content={this.showBoxUI()}>
+								<User>
+									<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+									ivytry2015
+								</User>
+							</Popover>
+							<NavItem><Divider type="vertical" /></NavItem>
+							<NavItem><Icon type="bell" /></NavItem>
+							<NavItem><Icon type="form" /></NavItem>
 						</div>
 					</Col>
 					<Col xs={4} sm={4} md={4} lg={3} xl={3}>
-						<SpaceBox
-							onMouseEnter={() => {handleShowSpace(true)}} 
-							onMouseLeave={() => {handleShowSpace(false)}}
-						>
-							<a href="#">30%</a>
-							{ this.isShowSpaceUI() }
+						<SpaceBox>
+							<Popover content={this.showSpaceUI()}>
+								<a href="#">30%</a>
+							</Popover>
 						</SpaceBox>
 					</Col>
 				</Row>
 			</div>
 		)
 	}
+
 	componentDidMount(){
 		this.props.initClassifyData()
 		this.props.initSpaceData()
@@ -129,28 +114,20 @@ class Header extends Component{
 }
 
 const mapStateToProps = (state) => ({
-	showBox: state.get("header").get("showbox"),
-	showClassify: state.get("header").get("showClassify"),
-	showSpace: state.get("header").get("showSpace"),
 	classifyList: state.get("header").get("classifyList"),
-	space: state.get("header").get("space")
+	space: state.get("header").get("space"),
+	navList: state.get("header").get("navList"),
 })
 
 const mapDispatchProps = (dispatch) => ({
-	handleShowBox: (flag) => {
-		dispatch(actionCreator.isShowBox(flag))
-	},
-	handleShowClassify: (flag) => {
-		dispatch(actionCreator.isShowClassify(flag))
-	},
 	initClassifyData: () => {
 		dispatch(actionCreator.getInitClassifyData())
 	},
-	handleShowSpace: (flag) => {
-		dispatch(actionCreator.isShowSpace(flag))
-	},
 	initSpaceData: (flag) => {
 		dispatch(actionCreator.getInitSpaceData())
+	},
+	initNavListData: (flag) => {
+		dispatch(actionCreator.getInitNavListData())
 	}
 })
 

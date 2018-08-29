@@ -11,19 +11,9 @@ const initSpaceData = (data) => ({
 	data: data
 })
 
-export const isShowBox = (flag) => ({
-	type: actionTypes.SHOWBOX,
-	flag: flag
-})
-
-export const isShowClassify = (flag) => ({
-	type: actionTypes.SHOWCLASSIFY,
-	flag: flag
-})
-
-export const isShowSpace = (flag) => ({
-	type: actionTypes.SHOWSPACE,
-	flag: flag
+const initNavListData = (data) => ({
+	type: actionTypes.GET_INIT_NAV_LIST_DATA,
+	data: data
 })
 
 export const getInitClassifyData = () => {
@@ -38,6 +28,14 @@ export const getInitSpaceData = () => {
 	return (dispatch) => {
 		axios.get("/api/space.json").then((res)=>{
 			dispatch(initSpaceData(res.data.data))
+		})
+	}
+}
+
+export const getInitNavListData = () => {
+	return (dispatch) => {
+		axios.get("/api/navList.json").then((res)=>{
+			dispatch(initNavListData(res.data.data))
 		})
 	}
 }
