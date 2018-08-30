@@ -5,7 +5,7 @@ import SortableTree, { toggleExpandedForAll } from 'react-sortable-tree';
 import FileExplorerTheme from 'react-sortable-tree-theme-file-explorer';
 
 import 'antd/dist/antd.css';
-import { Input, Button, Icon, Divider } from 'antd';
+import { Input, Icon, Divider } from 'antd';
 import { TreeRoot } from '../style';
 
 class Tree extends PureComponent{
@@ -41,10 +41,10 @@ class Tree extends PureComponent{
 	}
 
 	render(){
-		const { fileTree, expanded, searchString, searchFocusIndex, searchFoundCount, changeTableList, handleChangeTreeData, handleChange, expandAll, selectPrevMatch, selectNextMatch, handleSearchFinishCallback } = this.props
+		const { fileTree, expanded, searchString, searchFocusIndex, changeTableList, handleChangeTreeData, handleChange, expandAll, handleSearchFinishCallback } = this.props
 		return (
 			<TreeRoot id="root" style={{"padding":"20px 0 20px 10px"}}>
-	            <form onSubmit={event => { event.preventDefault() }} style={{"padding-right": "10px"}}>
+	            <form onSubmit={event => { event.preventDefault() }} style={{"paddingRight": "10px"}}>
 		            <Input.Search
 		            	size="small"
 		                placeholder="搜索文件"

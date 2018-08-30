@@ -50,8 +50,9 @@ export const Title = styled.div`
 		float:left;
 		margin:8px 12px 0 0;
     }
-    a{
+    span{
     	color:#999;
+    	cursor:pointer;
     }
 `;
 

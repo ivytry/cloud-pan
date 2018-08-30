@@ -8,7 +8,7 @@ import checkboxHOC from "react-table/lib/hoc/selectTable";
 import "react-table/react-table.css";
 
 import 'antd/dist/antd.css';
-import { Breadcrumb, Popover, Button, Input, Row, Col, Popconfirm, Icon, Upload, message, Drawer } from 'antd';
+import { Breadcrumb, Button, Input, Row, Col, Popconfirm, Icon, Upload, message, Drawer } from 'antd';
 import { Top, BtnLeft, BtnRight, Body } from './style';
 
 import ShareModal from './component/ShareModal';
@@ -108,6 +108,8 @@ class Home extends PureComponent{
     				return <CopyToModal />
     			case "moveTo":
     				return <MoveToModal />
+    			default:
+    				return
     		}
     	}else{
 	    	if(shareItem.get("id") === item.original.id){
@@ -122,6 +124,8 @@ class Home extends PureComponent{
 	    				return <CopyToModal />
 	    			case "moveTo":
 	    				return <MoveToModal />
+	    			default:
+	    				return
 	    		}
 		    }
 		}
@@ -142,7 +146,7 @@ class Home extends PureComponent{
 
 	render(){
 		const { isSelected, toggleSelection, toggleAll, showBtn, showModel, showUpload } = this
-		const { path, selectAll, tableList, showShareModal, showDownloadModal } = this.props
+		const { path, selectAll, tableList, showShareModal } = this.props
 		const columns = [{
 		    Header: '文件名',
 		    accessor: 'title',
@@ -206,7 +210,7 @@ class Home extends PureComponent{
 		return (
 			<div style={{"clear": "both"}}>
 				<Row>
-					<Col xs={4} sm={4} md={4} lg={3} xl={3} style={{"border-right": "1px solid #f0f0f0"}}>
+					<Col xs={4} sm={4} md={4} lg={3} xl={3} style={{"borderRight": "1px solid #f0f0f0"}}>
 						<Tree />
 					</Col>
 					<Col xs={20} sm={20} md={20} lg={21} xl={21}>

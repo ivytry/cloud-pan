@@ -16,6 +16,11 @@ const initNavListData = (data) => ({
 	data: data
 })
 
+export const changeUserMsg = (modalType) => ({
+	type: actionTypes.CHANGE_USER_MSG,
+	modalType
+})
+
 export const getInitClassifyData = () => {
 	return (dispatch) => {
 		axios.get("/api/classify.json").then((res)=>{

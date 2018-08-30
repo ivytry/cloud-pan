@@ -19,7 +19,6 @@ const defaultState = fromJS({
     shareVisible: false,
     shareForm: 1,
     shareExpiry: 0,
-    okSuccess: false,
     modalType: ''
 })
 
@@ -81,8 +80,6 @@ const reducer = (state = defaultState, action) => {
 			return state.set("shareFormVal", action.shareFormVal);
 		case actionTypes.CHANGE_SHARE_EXPIRY:
 			return state.set("shareExpiry", action.shareExpiry);
-		case actionTypes.CHANGE_OK_SUCCESS:
-			return state.set("okSuccess", action.okSuccess);
 		case actionTypes.CHANGE_TABLE_LIST:
 			return changeTableList(state, action);
 		case actionTypes.UPDATE_TREE_DATA:

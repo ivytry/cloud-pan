@@ -1,9 +1,8 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { actionCreator } from '../store';
-import { toJS } from 'immutable';
 
-import { message, Modal, Radio, Input, Select, Icon } from 'antd';
+import { Modal } from 'antd';
 import 'antd/dist/antd.css';
 
 class DelModal extends PureComponent{

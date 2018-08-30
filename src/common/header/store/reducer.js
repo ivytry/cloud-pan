@@ -4,7 +4,8 @@ import * as actionTypes from './actionTypes';
 const defaultState = fromJS({
 	space:{},
 	classifyList: [],
-	navList: []
+	navList: [],
+	modalType: ''
 })
 
 const reducer = (state = defaultState, action) => {
@@ -15,6 +16,8 @@ const reducer = (state = defaultState, action) => {
 			return state.set("space", fromJS(action.data));
 		case actionTypes.GET_INIT_NAV_LIST_DATA:
 			return state.set("navList", fromJS(action.data));
+		case actionTypes.CHANGE_USER_MSG:
+			return state.set("modalType", action.modalType);
 		default:
 			return state;
 	}
