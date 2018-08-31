@@ -7,6 +7,7 @@ import { Popover, Row, Col, Menu, Avatar, Icon, Divider, Dropdown, List } from '
 import { Logo, NavItem, SpaceBox, User, Title } from './style';
 
 import PostModal from './component/PostModal';
+import PwdModal from './component/PwdModal';
 
 class Header extends PureComponent{
 	constructor(){
@@ -18,18 +19,14 @@ class Header extends PureComponent{
 		switch(this.props.modalType){
 			case "post":
 				return <PostModal />
+			case "pwd":
+				return <PwdModal />
 			default:
 				return
 		}
 	}
 
 	showBoxUI(){
-		const userConf = [
-		  '个人资料',
-		  '设置密码',
-		  '帮助中心',
-		  '退出'
-		];
 		return (
 			<Fragment>
 				<Title>
@@ -38,12 +35,11 @@ class Header extends PureComponent{
 					</span>
 					<span>ivytry2015</span>
 				</Title>
-				<List
-			      size="small"
-			      dataSource={userConf}
-			      style={{"fontSize": "12px"}}
-			      renderItem={(item, index) => (<List.Item className="Item" key={index}><a href="#">{item}</a></List.Item>)}
-			    />
+				<List size="small" style={{"fontSize": "12px"}}>
+			    	<List.Item className="Item" onClick={() => {this.props.handleChangeMsg("pwd")}}><a href="#">设置密码</a></List.Item>
+			    	<List.Item className="Item" onClick={() => {this.props.handleChangeMsg("help")}}><a href="#">帮助中心</a></List.Item>
+			    	<List.Item className="Item" onClick={() => {this.props.handleChangeMsg("exit")}}><a href="#">退出</a></List.Item>
+			    </List>
 			</Fragment>
 		)
 	}
@@ -156,7 +152,7 @@ const mapDispatchProps = (dispatch) => ({
 		dispatch(actionCreator.getInitNavListData())
 	},
 	handleChangeMsg: (modalType) => {
-		dispatch(actionCreator.changeUserMsg(modalType))
+		dispatch(actionCreator.changeUserMsg(modalType, true))
 	}
 })
 

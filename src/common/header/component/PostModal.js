@@ -20,7 +20,7 @@ class PostModal extends PureComponent{
     }
 
 	render(){
-		const { shareItem, shareVisible, handleOk, handleCancel } = this.props
+		const { modalVisible, handleOk, handleCancel } = this.props
 		const onChange = (info) => {
 		    if (info.file.status !== 'uploading') {
 		    	this.showUpload(info.file, info.fileList, true)
@@ -34,13 +34,13 @@ class PostModal extends PureComponent{
 		return (
 			<Modal
 	          title="更换头像"
-	          visible={true}
+	          visible={modalVisible}
 	          cancelText="取消"
 	          centered={true}
 	          maskClosable={true}
 	          okText="确定"
 	          onOk={handleOk}
-	          onCancel={()=>{handleCancel(shareItem)}}
+	          onCancel={()=>{handleCancel()}}
 	          width={248}
 	        >
 	            <Upload 
@@ -64,18 +64,16 @@ class PostModal extends PureComponent{
 
 const mapState = (state) => ({
 	shareItem: state.get("home").get("shareItem"),
-	shareVisible: state.get("home").get("shareVisible"),
+	modalVisible: state.get("header").get("modalVisible"),
 })
 
-const mapDispatch = (dispatch) => {
-	return {
-		handleOk: () => {
-		    dispatch(actionCreator.changeOkSuccess(true))
-		},
-		handleCancel: (item) => {
-		    dispatch(actionCreator.changeShareVisible(item, false))
-		}
+const mapDispatch = (dispatch) => ({
+	handleOk: () => {
+	    dispatch(actionCreator.changeModalVisible(false))
+	},
+	handleCancel: () => {
+	    dispatch(actionCreator.changeModalVisible(false))
 	}
-}
+})
 
 export default connect(mapState, mapDispatch)(PostModal)

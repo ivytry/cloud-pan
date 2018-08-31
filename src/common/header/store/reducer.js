@@ -5,7 +5,8 @@ const defaultState = fromJS({
 	space:{},
 	classifyList: [],
 	navList: [],
-	modalType: ''
+	modalType: '',
+	modalVisible: false
 })
 
 const reducer = (state = defaultState, action) => {
@@ -17,7 +18,12 @@ const reducer = (state = defaultState, action) => {
 		case actionTypes.GET_INIT_NAV_LIST_DATA:
 			return state.set("navList", fromJS(action.data));
 		case actionTypes.CHANGE_USER_MSG:
-			return state.set("modalType", action.modalType);
+			return state.merge({
+				modalType: action.modalType,
+				modalVisible: action.modalVisible
+			});
+		case actionTypes.CHANGE_MODAL_VISIBLE:
+			return state.set("modalVisible", action.modalVisible);
 		default:
 			return state;
 	}

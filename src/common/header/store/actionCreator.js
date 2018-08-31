@@ -16,9 +16,15 @@ const initNavListData = (data) => ({
 	data: data
 })
 
-export const changeUserMsg = (modalType) => ({
+export const changeUserMsg = (modalType, modalVisible) => ({
 	type: actionTypes.CHANGE_USER_MSG,
-	modalType
+	modalType,
+	modalVisible
+})
+
+export const changeModalVisible = (modalVisible) => ({
+	type: actionTypes.CHANGE_MODAL_VISIBLE,
+	modalVisible
 })
 
 export const getInitClassifyData = () => {
