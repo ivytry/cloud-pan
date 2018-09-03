@@ -55,6 +55,7 @@ class PostModal extends PureComponent{
 		        	<img 
 		        		src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
 		        		style={{width: 200, height: 200, cursor: "pointer"}}
+		        		alt=""
 		        	/>
 		        </Upload>
 	        </Modal>

@@ -6,7 +6,9 @@ const defaultState = fromJS({
 	classifyList: [],
 	navList: [],
 	modalType: '',
-	modalVisible: false
+	modalVisible: false,
+	informVisible: false,
+	drawerType: ''
 })
 
 const reducer = (state = defaultState, action) => {
@@ -24,6 +26,11 @@ const reducer = (state = defaultState, action) => {
 			});
 		case actionTypes.CHANGE_MODAL_VISIBLE:
 			return state.set("modalVisible", action.modalVisible);
+		case actionTypes.CHANGE_INFORM_VISIBLE:
+			return state.merge({
+				"informVisible": action.informVisible,
+				"drawerType": action.drawerType
+			});
 		default:
 			return state;
 	}

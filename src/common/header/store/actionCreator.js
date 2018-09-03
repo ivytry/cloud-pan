@@ -27,6 +27,12 @@ export const changeModalVisible = (modalVisible) => ({
 	modalVisible
 })
 
+export const changeInformVisible = (informVisible, drawerType) => ({
+	type: actionTypes.CHANGE_INFORM_VISIBLE,
+	informVisible,
+	drawerType
+})
+
 export const getInitClassifyData = () => {
 	return (dispatch) => {
 		axios.get("/api/classify.json").then((res)=>{
