@@ -1,22 +1,28 @@
 {
 	"success": true,
 	"data":[{
-		"id":0,
-		"name":"网盘"
+		"id":"0",
+		"name":"网盘",
+		"url":"/"
 	},{
-		"id":1,
-		"name":"分类"
+		"id":"1",
+		"name":"分类",
+		"url":"/"
 	},{
-		"id":2,
-		"name":"分享"
+		"id":"2",
+		"name":"分享",
+		"url":"/share"
 	},{
-		"id":3,
-		"name":"足迹"
+		"id":"3",
+		"name":"足迹",
+		"url":"/foot"
 	},{
-		"id":4,
-		"name":"下载"
+		"id":"4",
+		"name":"下载",
+		"url":"/download"
 	},{
-		"id":5,
-		"name":"回收站"
+		"id":"5",
+		"name":"回收站",
+		"url":"/bin"
 	}]
 }

@@ -1,0 +1,264 @@
+{
+    "success": true,
+    "data": [
+        {
+            "id": "002f56a3-eab8-5955-b6d6-f1ded426cd11",
+            "title": "word",
+            "isDirectory": true,
+            "expanded": false,
+            "date": "2018-08-15 12:12",
+            "download": "1234",
+            "father": "all",
+            "children": [
+                {
+                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be22",
+                    "title": "styles.css",
+                    "isDirectory": true,
+                    "expanded": false,
+                    "date": "2018-08-15 12:12",
+                    "download": "234",
+                    "father": "002f56a3-eab8-5955-b6d6-f1ded426cd11",
+                    "children": [
+                        {
+                            "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be33",
+                            "title": "styles.css",
+                            "isDirectory": true,
+                            "expanded": false,
+                            "date": "2018-08-15 12:12",
+                            "download": "234",
+                            "father": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be22",
+                            "children": [
+                                {
+                                    "id": "9dc0fd23-6e71-5cc2-9413-9e3d6b63be44",
+                                    "title": "yigewenjian",
+                                    "date": "2018-08-15 12:12",
+                                    "father": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be33",
+                                    "download": "111"
+                                },
+                                {
+                                    "id": "9dc0fd23-6e71-5cc2-9413-9e3d6b63be55",
+                                    "title": "yigewenjian",
+                                    "date": "2018-08-15 12:12",
+                                    "father": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be33",
+                                    "download": "111"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be66",
+                    "title": "index.js",
+                    "isDirectory": true,
+                    "expanded": false,
+                    "date": "2018-08-15 12:12",
+                    "download": "234",
+                    "children": [
+                        {
+                            "id": "9dc03223-6e71-5cc2-9413-9e3d6b63be77",
+                            "title": "yigewe43ian",
+                            "date": "2018-08-15 12:12",
+                            "download": "123"
+                        }
+                    ]
+                },
+                {
+                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be88",
+                    "title": "reducers.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                },
+                {
+                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be99",
+                    "title": "actions.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                },
+                {
+                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63be00",
+                    "title": "utils.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                }
+            ]
+        },
+        {
+            "id": "9dc0fd79-6e71-5cc2-9443-9e3d6b63beb4",
+            "title": "work",
+            "isDirectory": true,
+            "expanded": false,
+            "date": "2018-08-15 12:12",
+            "download": "234",
+            "children": [
+                {
+                    "id": "9dc0fd79-2e71-5cc2-9413-9e3d6b63beb4",
+                    "title": "styles.css",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                },
+                {
+                    "id": "9dc0fd79-1e71-5cc2-9413-9e3d6b63beb4",
+                    "title": "index.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                },
+                {
+                    "id": "9dc0fd79-6e71-5cc2-9413-9e3d6b63beb4",
+                    "title": "reducers.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                },
+                {
+                    "id": "9dc0fd79-3371-5cc2-9413-9e3d6b63beb4",
+                    "title": "actions.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                },
+                {
+                    "id": "9dc0fd79-3271-5cc2-9413-9e3d6b63beb4",
+                    "title": "utils.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                }
+            ]
+        },
+        {
+            "id": "9dc2fd79-6e71-5cc2-9413-9e3d6b63beb4",
+            "title": "src",
+            "isDirectory": true,
+            "expanded": false,
+            "date": "2018-08-15 12:12",
+            "download": "234",
+            "children": [
+                {
+                    "id": "9dc3fd79-6e71-5cc2-9413-9e3d6b63beb4",
+                    "title": "styles.css",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                },
+                {
+                    "id": "9dc5fd79-6e71-5cc2-9413-9e3d6b63beb4",
+                    "title": "index.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                },
+                {
+                    "id": "9dc6fd79-6e71-5cc2-9413-9e3d6b63beb4",
+                    "title": "reducers.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                },
+                {
+                    "id": "9dc7fd79-6e71-5cc2-9413-9e3d6b63beb4",
+                    "title": "actions.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                },
+                {
+                    "id": "9dc8fd79-6e71-5cc2-9413-9e3d6b63beb4",
+                    "title": "utils.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                }
+            ]
+        },
+        {
+            "id": "1dc0fd79-6e71-5cc2-9413-9e3d6b63beb4",
+            "title": "tmp",
+            "isDirectory": true,
+            "date": "2018-08-15 12:12",
+            "download": "234",
+            "children": [
+                {
+                    "id": "2dc0fd79-6e71-5cc2-9413-9e3d6b63beb4",
+                    "title": "12214124-log",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                },
+                {
+                    "id": "3dc0fd79-6e71-5cc2-9413-9e3d6b63beb4",
+                    "title": "drag-disabled-file",
+                    "dragDisabled": true,
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                }
+            ]
+        },
+        {
+            "id": "4dc0fd79-6e71-5cc2-9413-9e3d6b63beb4",
+            "title": "build",
+            "isDirectory": true,
+            "date": "2018-08-15 12:12",
+            "download": "234",
+            "children": [
+                {
+                    "id": "5dc0fd79-6e71-5cc2-9413-9e3d6b63beb4",
+                    "title": "react-sortable-tree.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                }
+            ]
+        },
+        {
+            "id": "6dc0fd79-6e71-5cc2-9413-9e3d6b63beb4",
+            "title": "public",
+            "date": "2018-08-15 12:12",
+            "download": "234",
+            "isDirectory": true
+            
+        },
+        {
+            "id": "7dc0fd79-6e71-5cc2-9413-9e3d6b63beb4",
+            "title": "node_modules",
+            "date": "2018-08-15 12:12",
+            "download": "234",
+            "isDirectory": true
+            
+        },
+        {
+            "id": "8dc0fd79-6e71-5cc2-9413-9e3d6b63beb4",
+            "title": "home",
+            "isDirectory": true,
+            "date": "2018-08-15 12:12",
+            "download": "234",
+            "children": [
+                {
+                    "id": "9dc0fd79-6e71-23c2-9413-9e3d6b63beb4",
+                    "title": "react-sortable-tree.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                }
+            ]
+        },
+        {
+            "id": "99c0fd79-6e71-5cc2-9413-9e3d6b63beb4",
+            "title": "pic",
+            "isDirectory": true,
+            "date": "2018-08-15 12:12",
+            "download": "234",
+            "children": [
+                {
+                    "id": "9dc0fd79-9071-5cc2-9413-9e3d6b63beb4",
+                    "title": "react-sortable-tree.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                }
+            ]
+        },
+        {
+            "id": "9dc0fd79-1171-5cc2-9413-9e3d6b63beb4",
+            "title": "video",
+            "isDirectory": true,
+            "date": "2018-08-15 12:12",
+            "download": "234",
+            "children": [
+                {
+                    "id": "9dc0fd79-6671-5cc2-9413-9e3d6b63beb4",
+                    "title": "react-sortable-tree.js",
+                    "date": "2018-08-15 12:12",
+                    "download": "234"
+                }
+            ]
+        }
+    ]
+}

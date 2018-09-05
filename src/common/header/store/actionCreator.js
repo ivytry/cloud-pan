@@ -33,6 +33,11 @@ export const changeInformVisible = (informVisible, drawerType) => ({
 	drawerType
 })
 
+export const changeNav = (currentKey) => ({
+	type: actionTypes.CHANGE_NAV,
+	currentKey,
+})
+
 export const getInitClassifyData = () => {
 	return (dispatch) => {
 		axios.get("/api/classify.json").then((res)=>{

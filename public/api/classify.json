@@ -1,22 +1,22 @@
 {
 	"success": true,
 	"data":[{
-		"id":1,
+		"id":"pic",
 		"name":"图片"
 	},{
-		"id":2,
+		"id":"file",
 		"name":"文档"
 	},{
-		"id":3,
+		"id":"video",
 		"name":"视频"
 	},{
-		"id":4,
+		"id":"seed",
 		"name":"种子"
 	},{
-		"id":5,
+		"id":"music",
 		"name":"音乐"
 	},{
-		"id":6,
+		"id":"other",
 		"name":"其它"
 	}]
 }

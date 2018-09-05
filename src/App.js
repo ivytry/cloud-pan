@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import Header from './common/header';
 import Home from './pages/home';
+import Share from './pages/share';
 import './style.js';
 
 class App extends Component {
@@ -13,10 +14,13 @@ class App extends Component {
 				<div>
 					<Header />
 					<BrowserRouter>
-						<Route exact path="/" component={Home} />
+						<div>
+							<Route exact path="/" component={Home} />
+							<Route exact path="/share" component={Share} />
+						</div>
 					</BrowserRouter>
 				</div>
-			</Provider>
+			</Provider>	
 		)
 	}
 }

@@ -56,17 +56,15 @@ class Header extends PureComponent{
 
 	classifyUI(){
 		return (
-			<Menu selectedKeys="">
+			<Menu.ItemGroup>
 				{
 					this.props.classifyList.map((item)=>{
 						return (
-							<Menu.Item key={item.get("id")} style={{"padding":"0 20px", "left": "-10px"}}>
-						      <a rel="noopener noreferrer" href="#">{item.get("name")}</a>
-						    </Menu.Item>
+							<Menu.Item key={item.get("id")}>{item.get("name")}</Menu.Item>
 					    )
 					})
 				}
-			</Menu>
+			</Menu.ItemGroup>
 		)
 	}
 
@@ -123,7 +121,8 @@ class Header extends PureComponent{
 	}
 
 	render(){
-		const { navList, informVisible, changeInformVisible, handleChangeMsg } = this.props
+		const { navList, currentKey, informVisible, changeInformVisible, handleChangeMsg, handleChangeNav } = this.props
+		console.log(currentKey)
 		return (
 			<div style={{"clear": "both"}}>
 				<Row style={{"height":"56px", "borderBottom": "1px solid #f0f0f0"}}>
@@ -133,22 +132,20 @@ class Header extends PureComponent{
 					<Col xs={16} sm={16} md={16} lg={18} xl={18}>
 						<div style={{"float": "left"}}>
 							<Menu
-						        selectedKeys={["0"]}
+						        selectedKeys={[currentKey]}
 						        mode="horizontal"
+						        onClick={(e) => {handleChangeNav(e)}}
 					        >
 					        	{
 					        		navList.map((item) => {
-					        			const id = item.get("id")
-					        			if(id === 1){
+					        			if(item.get("id") === '1'){
 					        				return (
-					        					<Menu.Item key="type" style={{"marginTop":"6px", "padding": "0"}}>
-									        		<Dropdown overlay={this.classifyUI()}>
-									        			<a href="#" style={{"padding":"0 20px"}}>分类</a>
-									        		</Dropdown>
-									        	</Menu.Item>
+									        	<Menu.SubMenu style={{"marginTop":"6px"}} title={<span className="submenu-title-wrapper">{item.get("name")}</span>}>
+										            {this.classifyUI()}
+										        </Menu.SubMenu>
 										    )
 					        			}else{
-					        				return <Menu.Item key={id} style={{"marginTop":"6px"}}>{item.get("name")}</Menu.Item>
+					        				return <Menu.Item key={item.get("id")} style={{"marginTop":"6px"}}><a href={item.get("url")}>{item.get("name")}</a></Menu.Item>
 					        			}
 					        		})
 					        	}
@@ -195,6 +192,7 @@ const mapStateToProps = (state) => ({
 	modalType: state.get("header").get("modalType"),
 	informVisible: state.get("header").get("informVisible"),
 	drawerType: state.get("header").get("drawerType"),
+	currentKey: state.get("header").get("currentKey"),
 })
 
 const mapDispatchProps = (dispatch) => ({
@@ -212,6 +210,9 @@ const mapDispatchProps = (dispatch) => ({
 	},
 	changeInformVisible: (visible, drawerType) => {
 		dispatch(actionCreator.changeInformVisible(visible, drawerType))
+	},
+	handleChangeNav: (e) => {
+		dispatch(actionCreator.changeNav(e.key))
 	}
 })
 

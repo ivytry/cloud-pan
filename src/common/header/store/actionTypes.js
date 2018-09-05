@@ -4,3 +4,4 @@ export const GET_INIT_NAV_LIST_DATA = 'header/GET_INIT_NAV_LIST_DATA';
 export const CHANGE_USER_MSG = 'header/CHANGE_USER_MSG';
 export const CHANGE_MODAL_VISIBLE = 'header/CHANGE_MODAL_VISIBLE';
 export const CHANGE_INFORM_VISIBLE = 'header/CHANGE_INFORM_VISIBLE';
+export const CHANGE_NAV = 'header/CHANGE_NAV';

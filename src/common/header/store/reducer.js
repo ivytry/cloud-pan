@@ -8,7 +8,8 @@ const defaultState = fromJS({
 	modalType: '',
 	modalVisible: false,
 	informVisible: false,
-	drawerType: ''
+	drawerType: '',
+	currentKey: '0'
 })
 
 const reducer = (state = defaultState, action) => {
@@ -26,6 +27,8 @@ const reducer = (state = defaultState, action) => {
 			});
 		case actionTypes.CHANGE_MODAL_VISIBLE:
 			return state.set("modalVisible", action.modalVisible);
+		case actionTypes.CHANGE_NAV:
+			return state.set("currentKey", action.currentKey);
 		case actionTypes.CHANGE_INFORM_VISIBLE:
 			return state.merge({
 				"informVisible": action.informVisible,
