@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.26.20",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "chance": "^1.1.7",
     "immutable": "^3.8.2",
     "react": "^16.4.2",
